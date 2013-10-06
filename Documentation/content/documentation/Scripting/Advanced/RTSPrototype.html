@@ -1,34 +1,12 @@
 ﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
-<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
-<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
-<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
-<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
-<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
-<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
-<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
-<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
-<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
-<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
-<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
-<script>
-   // this script chunk is to update the ToC to the current doc and expand it
-   pageID = 57;
-   parent.leftFrame.expandToItem('tree2', 'doc57');
-   var element = parent.leftFrame.document.getElementById('doc57');
-   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
-{
-   element.className = parent.leftFrame.nodeOpenClass
-}
-;
-</script>
+<head>
 <link rel="stylesheet" type="text/css" href="../../../include/container.css" />
 <link rel="stylesheet" type="text/css" href="../../../include/content.css" />
 <title>Torque3D - RTS Prototype</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     </head>
-<BODY id = "BODYID" onLoad = "initComponent()"  bgcolor="#FFFFFF" class="mediawiki ltr ns-0 ns-subject page-Torque3D_Scripting_Advanced_RTSPrototype skin-monobook">
+<body bgcolor="#FFFFFF" class="mediawiki ltr ns-0 ns-subject page-Torque3D_Scripting_Advanced_RTSPrototype skin-monobook">
 <table width="700" cellspacing="0" cellpadding="0" border="0" style="text-align: justify;" xmlns="">
 <tr>
 <td width="700">
@@ -187,7 +165,7 @@ datablock PlayerData(BoomBotData : DefaultPlayerData)
 
 function serverCmdorbitCam(%client)
 {
-   %client.camera.setOrbitObject(%client.player, mDegToRad(20) @ "0 0", 0, 5.5, 5.5);
+   %client.camera.setOrbitObject(%client.player, mDegToRad(20) SPC "0 0", 0, 5.5, 5.5);
    %client.camera.camDist = 5.5;
    %client.camera.controlMode = "OrbitObject";
 }
@@ -202,7 +180,7 @@ function serverCmdtoggleCamMode(%client)
 {
    if(%client.camera.controlMode $= "Overhead")
    {
-      %client.camera.setOrbitObject(%client.player, mDegToRad(20) @ "0 0", 0, 5.5, 5.5);
+      %client.camera.setOrbitObject(%client.player, mDegToRad(20) SPC "0 0", 0, 5.5, 5.5);
       %client.camera.camDist = 5.5;
       %client.camera.controlMode = "OrbitObject";
    }
@@ -235,7 +213,7 @@ function serverCmdadjustCamera(%client, %adjustment)
    }
    if(%client.camera.controlMode $= "Overhead")
    {
-      %client.camera.position = VectorAdd(%client.camera.position, "0 0 " @ %adjustment);
+      %client.camera.position = VectorAdd(%client.camera.position, "0 0" SPC %adjustment);
    }
 }</pre>
 <p>Additionally, in <strong>scripts/client/default.bind.cs</strong> we&#39;ll add some 
@@ -1695,7 +1673,7 @@ moveMap.bindCmd( keyboard, "ctrl x", "addSelect();", "dropSelect();" );
   
   </div>
 
-</td></tr></table><div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</td></tr></table></body>
 <script type="text/javascript">
 
 var links = document.getElementsByTagName('a');
