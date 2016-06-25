@@ -13,9 +13,9 @@
 <link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
 <script>
    // this script chunk is to update the ToC to the current doc and expand it
-   pageID = 14;
-   parent.leftFrame.expandToItem('tree2', 'doc14');
-   var element = parent.leftFrame.document.getElementById('doc14');
+   pageID = 64;
+   parent.leftFrame.expandToItem('tree2', 'doc64');
+   var element = parent.leftFrame.document.getElementById('doc64');
    if((element) && (element.className==parent.leftFrame.nodeClosedClass))
 {
    element.className = parent.leftFrame.nodeOpenClass
@@ -153,9 +153,9 @@
                 <li><b>colcapsule</b><span
          class=GramE><b>-</b> is used for capsule
                   collision shapes (<i>note that cylindrical is not an option</i>)
-                   
-                  <i>*in Autodesk Softimage a “cylinder” can be used in
-                  place of a “capsule” since Softimage doesn’t have a “Capsule” primitive.
+                  ï¿½
+                  <i>*in Autodesk Softimage a ï¿½cylinderï¿½ can be used in
+                  place of a ï¿½capsuleï¿½ since Softimage doesnï¿½t have a ï¿½Capsuleï¿½ primitive.
                   Just name it colcapsule- and it will be
                   treated as a capsule. Note: The radius of the bevel is the same as the
                   radius of the cylinder and then the length is to the tip of the
@@ -182,10 +182,10 @@
                 import/export plugins for transferring data between Softimage and other
                 programs via the .xsi, .dae,
                 and .fbx plugins. However, there is a bug in the
-                way that Softimage exports COLLADA when using the “Export Selected” option
-                where when you don’t select via a middle click “Branch Select” then it
+                way that Softimage exports COLLADA when using the ï¿½Export Selectedï¿½ option
+                where when you donï¿½t select via a middle click ï¿½Branch Selectï¿½ then it
                 basically dumps everything in the root of the scene. To overcome this we
-                will use Softimage’s “model containers” for our branches. In the image
+                will use Softimageï¿½s ï¿½model containersï¿½ for our branches. In the image
                 above you can see the model containers at the top of the hierarchy.</p>
               <p>Here is what it looks like in
                 the Explorer window:</p>
@@ -194,15 +194,15 @@
     alt="Description: C:\Users\jbarnette\Desktop\DestructibleDocumentation_SI\exportHierarchy.jpg"
     v:shapes="Picture_x0020_14"></p>
               <p>So, to export the crate broken
-                branch we will “middle-click” the “base-node” on the branch for the broken
-                crate. Then hold CTRL and then “Left-Click” the bounds node. Like so:</p>
+                branch we will ï¿½middle-clickï¿½ the ï¿½base-nodeï¿½ on the branch for the broken
+                crate. Then hold CTRL and then ï¿½Left-Clickï¿½ the bounds node. Like so:</p>
               <p><img border=0 width=273 height=463
     src="images/image012.jpg"
     alt="Description: C:\Users\jbarnette\Desktop\DestructibleDocumentation_SI\exportHierarchySelected.jpg"
     v:shapes="Picture_x0020_15"></p>
               <p>
                 Now, with the items we need selected we can export via Crosswalk.
-                File&gt;Crosswalk&gt;Export…</p>
+                File&gt;Crosswalk&gt;Exportï¿½</p>
               <p>Then on the Settings tab we need
                 to make sure that we have the following items checked:
                 
@@ -243,8 +243,8 @@
               <p>Shapes often need to have their
                 transforms reset after being modeled so they align properly with their
                 collision volume. To avoid any unwanted weirdness just in case you happened
-                to accidently scale one of your “Base” or “Start” nodes, I suggest
-                activating the “Child Compensation” under Constrain on the “MCP” on the
+                to accidently scale one of your ï¿½Baseï¿½ or ï¿½Startï¿½ nodes, I suggest
+                activating the ï¿½Child Compensationï¿½ under Constrain on the ï¿½MCPï¿½ on the
                 right-hand side of the screen.</p>
               <p><img border=0 width=163 height=112
     src="images/image018.jpg"
@@ -265,7 +265,7 @@
                 Modeling</b></p>
               <p>Also, you will want to freeze
                 the modeling. This is like the collapse stack function in 3D Studio Max. It
-                is located in the “Edit” section of the “MCP”</p>
+                is located in the ï¿½Editï¿½ section of the ï¿½MCPï¿½</p>
               <p><img border=0 width=179 height=128
     src="images/image020.jpg"
     alt="Description: Description: Description: C:\Users\jbarnette\Desktop\DestructibleDocumentation_SI\freeze.jpg"
@@ -315,18 +315,18 @@ datablock PhysicsShapeData( PSCrateSquare )
 	shapeName = &quot;art/shapes/physicsShapes/crate_square_unbroken.DAE&quot;;
 	emap = 1;
 	mass = 5;
-	massCenter = &quot;0 0 0&quot;;      // Center of mass for rigid body
-	massBox = &quot;0 0 0&quot;;         // Size of box used for moment of inertia,
+	massCenter = &quot;0 0 0&quot;;ï¿½ï¿½ï¿½ï¿½ï¿½ // Center of mass for rigid body
+	massBox = &quot;0 0 0&quot;;ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ // Size of box used for moment of inertia,
                                    // if zero it defaults to object bounding box
 	drag = 0.2;                // Drag coefficient
 	bodyFriction = 0.2;
 	bodyRestitution = 0.1;
 	minImpactSpeed = 5;        // Impacts over this invoke the script callback
-	softImpactSpeed = 5;       // Play SoftImpact Sound
-	hardImpactSpeed = 15;      // Play HardImpact Sound
-	integration = 4;           // Physics integration: TickSec/Rate
-	collisionTol = 0.1;        // Collision distance tolerance
-	contactTol = 0.1;          // Contact velocity tolerance
+	softImpactSpeed = 5;ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ // Play SoftImpact Sound
+	hardImpactSpeed = 15;ï¿½ï¿½ï¿½ï¿½ï¿½ // Play HardImpact Sound
+	integration = 4;ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ // Physics integration: TickSec/Rate
+	collisionTol = 0.1;ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ // Collision distance tolerance
+	contactTol = 0.1;ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ // Contact velocity tolerance
 	minRollSpeed = 10;
 	maxDrag = 0.5;
 	minDrag = 0.01;
@@ -408,7 +408,7 @@ datablock PhysicsShapeData( PSCrateSquare )
               </ul>
               <p>
                 As before, in order to export the hierarchies properly we have to separate
-                things into “model containers,” like so:</p>
+                things into ï¿½model containers,ï¿½ like so:</p>
               <p><img border=0 width=256 height=194
     src="images/image026.jpg"
     alt="Description: Description: Description: C:\Users\jbarnette\Desktop\DestructibleDocumentation_SI\explorerMultiStateFence.jpg"

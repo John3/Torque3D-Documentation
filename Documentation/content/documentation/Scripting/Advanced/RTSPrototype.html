@@ -1,4 +1,4 @@
-﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
 <SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
@@ -14,9 +14,9 @@
 <link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
 <script>
    // this script chunk is to update the ToC to the current doc and expand it
-   pageID = 57;
-   parent.leftFrame.expandToItem('tree2', 'doc57');
-   var element = parent.leftFrame.document.getElementById('doc57');
+   pageID = 85;
+   parent.leftFrame.expandToItem('tree2', 'doc85');
+   var element = parent.leftFrame.document.getElementById('doc85');
    if((element) && (element.className==parent.leftFrame.nodeClosedClass))
 {
    element.className = parent.leftFrame.nodeOpenClass
@@ -48,42 +48,44 @@
                         <ul>
                           <li class="toclevel-1"><a href="#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a></li>
                           <li class="toclevel-1"><a href="#Create_Project"><span class="tocnumber">2</span> <span class="toctext">Create A New Project</span></a></li>
-                          <li class="toclevel-1"><a href="#Camera_Setup"><span class="tocnumber">3</span> <span class="toctext">Camera Setup</span></a></li>
-                          <li class="toclevel-1"><a href="#Mouse_Setup"><span class="tocnumber">4</span> <span class="toctext">Mouse Setup</span></a>
+                          <li class="toclevel-1"><a href="#First_Step"><span class="tocnumber">3</span> <span class="toctext">First Steps</span></a></li>
+                          <li class="toclevel-1"><a href="#Camera_Setup"><span class="tocnumber">4</span> <span class="toctext">Camera Setup</span></a></li>
+                          <li class="toclevel-1"><a href="#Mouse_Setup"><span class="tocnumber">5</span> <span class="toctext">Mouse Setup</span></a>
                             <ul>
-                              <li class="toclevel-2"><a href="#Mouse_Cursor_Toggling"><span class="tocnumber">4.1</span> <span class="toctext">Mouse Cursor Toggling</span></a></li>
-                              <li class="toclevel-2"><a href="#Mouse_Click_Reaction"><span class="tocnumber">4.2</span> <span class="toctext">Placing Structures Using The GUI</span></a></li>
+                              <li class="toclevel-2"><a href="#Mouse_Cursor_Toggling"><span class="tocnumber">5.1</span> <span class="toctext">Mouse Cursor Toggling</span></a></li>
+                              <li class="toclevel-2"><a href="#Mouse_Click_Reaction"><span class="tocnumber">5.2</span> <span class="toctext">Placing Structures Using The GUI</span></a></li>
                             </ul>
                           </li>
-                          <li class="toclevel-1"><a href="#Mouse-Driven_Input"><span class="tocnumber">5</span> <span class="toctext">Mouse-Driven Input</span></a>
+                          <li class="toclevel-1"><a href="#Mouse-Driven_Input"><span class="tocnumber">6</span> <span class="toctext">Mouse-Driven Input</span></a>
                             <ul>
-                              <li class="toclevel-2"><a href="#Player_Spawning"><span class="tocnumber">5.1</span> <span class="toctext">Player Spawning</span></a></li>
-                              <li class="toclevel-2"><a href="#Movement"><span class="tocnumber">5.2</span> <span class="toctext">Movement</span></a></li>
-                              <li class="toclevel-2"><a href="#Spawning_Enemy_Targets"><span class="tocnumber">5.3</span> <span class="toctext">Spawning Enemy Targets</span></a></li>
-                              <li class="toclevel-2"><a href="#Attacking"><span class="tocnumber">5.4</span> <span class="toctext">Attacking</span></a></li>
-                              <li class="toclevel-2"><a href="#Tweaking_Attacks"><span class="tocnumber">5.5</span> <span class="toctext">Tweaking Attacks</span></a></li>
+                              <li class="toclevel-2"><a href="#Player_Spawning"><span class="tocnumber">6.1</span> <span class="toctext">Player Spawning</span></a></li>
+                              <li class="toclevel-2"><a href="#Movement"><span class="tocnumber">6.2</span> <span class="toctext">Movement</span></a></li>
+                              <li class="toclevel-2"><a href="#Spawning_Enemy_Targets"><span class="tocnumber">6.3</span> <span class="toctext">Spawning Enemy Targets</span></a></li>
+                              <li class="toclevel-2"><a href="#Attacking"><span class="tocnumber">6.4</span> <span class="toctext">Attacking</span></a></li>
+                              <li class="toclevel-2"><a href="#Tweaking_Attacks"><span class="tocnumber">6.5</span> <span class="toctext">Tweaking Attacks</span></a></li>
                             </ul>
                           </li>
-                          <li class="toclevel-1"><a href="#Destination_Markers"><span class="tocnumber">6</span> <span class="toctext">Destination Markers</span></a>
+                          <li class="toclevel-1"><a href="#Destination_Markers"><span class="tocnumber">7</span> <span class="toctext">Destination Markers</span></a>
                             <ul>
-                              <li class="toclevel-2"><a href="#Creating_a_Material"><span class="tocnumber">6.1</span> <span class="toctext">Creating a Material</span></a></li>
-                              <li class="toclevel-2"><a href="#Creating_a_Decal"><span class="tocnumber">6.2</span> <span class="toctext">Creating a Decal</span></a></li>
-                              <li class="toclevel-2"><a href="#Spawning_the_Marker"><span class="tocnumber">6.3</span> <span class="toctext">Spawning the Marker</span></a></li>
-                              <li class="toclevel-2"><a href="#Erasing_the_Marker"><span class="tocnumber">6.4</span> <span class="toctext">Erasing the Marker</span></a></li>
+                              <li class="toclevel-2"><a href="#Creating_a_Material"><span class="tocnumber">7.1</span> <span class="toctext">Creating a Material</span></a></li>
+                              <li class="toclevel-2"><a href="#Creating_a_Decal"><span class="tocnumber">7.2</span> <span class="toctext">Creating a Decal</span></a></li>
+                              <li class="toclevel-2"><a href="#Spawning_the_Marker"><span class="tocnumber">7.3</span> <span class="toctext">Spawning the Marker</span></a></li>
+                              <li class="toclevel-2"><a href="#Erasing_the_Marker"><span class="tocnumber">7.4</span> <span class="toctext">Erasing the Marker</span></a></li>
                             </ul>
                           </li>
-                          <li class="toclevel-1"><a href="#Camera_Modes"><span class="tocnumber">7</span> <span class="toctext">Camera Modes</span></a>
+                          <li class="toclevel-1"><a href="#Camera_Modes"><span class="tocnumber">8</span> <span class="toctext">Camera Modes</span></a>
                             <ul>
-                              <li class="toclevel-2"><a href="#Orbit_Camera"><span class="tocnumber">7.1</span> <span class="toctext">Orbit Camera</span></a></li>
-                              <li class="toclevel-2"><a href="#Overhead_Camera"><span class="tocnumber">7.2</span> <span class="toctext">Overhead Camera</span></a></li>
+                              <li class="toclevel-2"><a href="#Orbit_Camera"><span class="tocnumber">8.1</span> <span class="toctext">Orbit Camera</span></a></li>
+                              <li class="toclevel-2"><a href="#Overhead_Camera"><span class="tocnumber">8.2</span> <span class="toctext">Overhead Camera</span></a></li>
                             </ul>
                           </li>
-                          <li class="toclevel-1"><a href="#GoingRTS"><span class="tocnumber">8</span> <span class="toctext">Going More Real-Time Strategy</span></a></li>
-                          <li class="toclevel-1"><a href="#Conclusion"><span class="tocnumber">9</span> <span class="toctext">Conclusion</span></a></li>
+                          <li class="toclevel-1"><a href="#GoingRTS"><span class="tocnumber">9</span> <span class="toctext">Going More Real-Time Strategy</span></a></li>
+                          <li class="toclevel-1"><a href="#Conclusion"><span class="tocnumber">10</span> <span class="toctext">Conclusion</span></a></li>
                         </ul></td>
                     </tr>
                   </tbody>
                 </table>
+                <h1> <span class="mw-headline">RTS Prototype: Part 1</span></h1>
                 <a name="Introduction" id="Introduction"></a>
                 <h2> <span class="mw-headline">Introduction</span></h2>
                 <p>Torque 3D's stock demos and templates are setup for first person
@@ -95,7 +97,7 @@
                 <ul>
                   <li>Advanced scripting </li>
                   <li>Camera manipulation </li>
-                  <li>Simple AI </li>
+                  <li>Simple AI unit navigation</li>
                   <li>Object spawning </li>
                   <li>Mouse and keyboard input </li>
                   <li>Basic RTS and Hack &amp; Slash mechanics </li>
@@ -111,75 +113,137 @@
                   <li>Decal Editor </li>
                   <li>Datablock Editor </li>
                 </ul>
+                <p>
+                      <h5>NOTE:  Changes between Torque 3D MIT 3.0 and 3.5 have broken this prototype.</h5>
+                    <p>
+                        <em>If you are using Torque 3D MIT 3.5 or later you will need to be intimately familiar with Torque 3D and the changes
+                        that were made between the 3.0 and 3.5 releases.  The premade scripts that are provided have been reported to function
+                        incorrectly when transplanted directly and would need extensive debugging to get them working properly.</em>
+                    </p>
+                    <p>
+                        <em>You have been warned.</em>
+                    </p>
+                </p>
                 <a name="Create_Project" id="A2"></a>
                 <h2> <span class="mw-headline">Create A Fresh Project</span></h2>
-                <p>We&#39;re going to start with a clean project, so open the Toolbox and create one 
-                    using the Full Template.&nbsp; This will give us a blank terrain to work with.</p>
-                  <p><br />
-                      <img alt="" src="images/MTNewProject.png" /></p>
-                  <p>Name your new project RTS_Prototype and select the Full template.</p>
-                  <p><br />
-                      <img alt="" src="images/RTS_CreateNewProject.png" /></p>
-                  <p>When the project has been created, select your project (1), select the <strong>
-                      Empty Terrain</strong> mission (2) and open it in the World Editor (3).</p>
-                  <p><br />
-                      <img alt="" src="images/RTS_SelectAndEditProject.png" /></p>
-                <p><br />
-                  The Full Template used for this tutorial project should contain base art and scripts needed to run the game, but we want to use some custom models. Start by <a href="rts_prototype_art.zip" class="downloads">CLICKING HERE</a> to download a zip file containing the sample assets.</p>
+                <p>We&#39;re going to start with a clean project. &nbsp;I usually do this manually using the following steps: </p>
+<p>
+<ol>
+	<li>Copy the Full folder from <strong>Templates</strong> to <strong>My Projects</strong>.</li>
+    <li>Rename the Full folder.  In this instance, rename it to RTSProto.</li>
+    <li>Rename the <strong>game/Full.torsion</strong> file to match my project folder (RTSProto).</li>
+    <li>Edit the <strong>buildFiles/config/project.conf</strong> file:</li>
+    <ol type="a">
+    	<li>Change the project name in the <strong>Torque3D::beginConfig</strong> line to match your project (RTSProto).</li>
+        <li>Add the navigation module by adding <strong>includeModule( 'navigation' );</strong> inside the config block.</li>
+    </ol>
+    <li>Run the <strong>generateProjects.bat</strong> file to generate the updated solution and project files.</li>
+    <li>Build the project in your preferred compiler.</li>
+</ol>
+<br/>
+<p>
+                  The Full Template used for this tutorial project should contain base art and scripts needed to run the game.  We will be creating a few custom assets for the project as 
+                  we go along.</p>
 
-                <p><br />
-                    Copy the art folder in the zip file on top of your project's art file. This will add the models, their datablocks, and their materials to your project if they do not exist. When you are ready, continue reading to configure your mouse controls. 
-                </p>
-                <p><br />
-                    <img alt="" src="images/RTS_FileLocations.png" />
-                </p>
-                <p><br />
-                    <strong>BoomBot.cs</strong>, which contains the&nbsp; should be located in the 
-                    <strong>game/art/datablocks</strong> folder (1).&nbsp; The image for the 
-                    building placement button should be in the <strong>game/art/gui</strong> folder 
-                    (2).&nbsp; The files associated with Boom Bot's model, textures and animations should be located in the
-                    <strong>game/art/shapes/actors/BoomBot</strong> folder (3).
-                </p>
-                <p><br />
-                    The zip file adds two new models to the project. One is a simple, static building. The other is a custom player model called Boom Bot. While you can simply drag and drop these models in via the World Editor, we need to hook up a script file prepared specifically for Boom Bot.</p>
-                <p><br />
-                    To get Boom Bot fully working, open <b>game/art/datablocks/datablockExec.cs</b> Scroll down until you see the following code:</p>
-                <br />
-                <pre>exec("./aiPlayer.cs");</pre>
-                <br />
-                <p>Just below that line, add the following:</p>
-                <br />
-                <pre>exec("./BoomBot.cs");</pre>
-                <p><br />
-                    In Torsion it should look something like this:
-                </p>
-                <p><br /><img alt="" src="images/RTS_AddBoombotExec.png" /></p>
-                <p>Also, check your BoomBot datablock if you are not using the files from the download.  It should look like this:</p>
-                <br />
-                <pre>
-datablock PlayerData(BoomBotData : DefaultPlayerData)
-{
-   shapeFile = "art/shapes/actors/BoomBot/BoomBot.dts";
-
-   boundingBox = "1.1 1.2 2.5";
-   pickupRadius = "1.2";
-};                </pre>
-<p>Next, in <strong>scripts/server/gameDM.cs</strong> we&#39;ll change the default player class and 
+<br />
+                <a name="First_Step" id="First_Step"></a>
+                <h2> <span class="mw-headline">First Steps</span></h2>
+<h3> <span class="mw-headline">Navigation</span></h3>
+<p>We need to add a navigation mesh to our mission so that we know where we can place buildings and to allow units to path correctly around the mission 
+area.  Start the game and open <strong>Empty Terrain.mis</strong> in the World Editor.  Once it is open, select the <strong>Mission Area Editor</strong> from 
+the Editor rollout:
+</p>
+<p>
+  <img alt="" src="images/RTS_CreateMissionArea.png" /></p>
+<p>Next, adjust the mission area to fill most of the map by dragging the red corner nodes:
+</p>
+<p>
+  <img alt="" src="images/RTS_FitMissionArea.png" /></p>
+<p>Then select the <strong>Navigation Editor</strong> from the Editor rollout:
+</p>
+<p>
+  <img alt="" src="images/RTS_CreateNavMesh.png" /></p>
+<p>In the New NavMesh dialog, set the name to <strong>NavEmptyTerrain</strong> and select both <strong>Fit NavMesh to mission area</strong> and <strong>Include terrain</strong>.  Finally, click the <strong>Create!</strong> button.</p>
+<p>
+  <img alt="" src="images/RTS_NavCreationSettings.png" /></p>
+<p>Now we need to configure and build the navigation mesh.  Set the <strong>name</strong> to <strong>NavEmptyTerrain</strong>, the <strong>fileName</strong> to <strong>levels/NavEmptyTerrain.nav</strong>, update the <strong>scale</strong> so that the third element (z) is around 500(just to be sure all objects added later are correctly added to the nav mesh), and the <strong>walkableSlope</strong> to <strong>36</strong> (our player datablock sets the maximum walkable slope to 38 degrees).  Then select <strong>Play sound when done</strong> and click the <strong>Build NavMesh</strong> button.  This will take a few minutes.</p>
+<p>
+  <img alt="" src="images/RTS_NavSettings.png" /></p>
+ <p>You should now have a navigation mesh that covers the entire mission area.</p>
+<h3> <span class="mw-headline">Loadout</span></h3>
+<p>Now, in <strong>scripts/server/gameDM.cs</strong> we&#39;ll change the default player class and 
     datablock.&nbsp; In <strong>DeathMatchGame::initGameVars()</strong> make the 
-    following changes:</p>
+    following change:</p>
 <pre>
-    $Game::defaultPlayerClass = "AiPlayer";
-    $Game::defaultPlayerDataBlock = "BoomBotData";
+    $Game::DefaultPlayerClass = "AiPlayer";
+    $Game::DefaultPlayerDataBlock = "DemoPlayer";
 </pre>
 <p>This gives us the ability to tell our unit where to go and let the AI class 
-    handle getting it there.  It also lets us have our default player be the BoomBot 
-    without having to specify it at the spawnpoint.</p>
-                <br />
-                <a name="Camera_Setup" id="A1"></a>
-                <h2> <span class="mw-headline">Camera Setup</span></h2>
-                <p>First we're going to set up our camera mode framework.  In <strong>
-                    scripts/server/commands.cs</strong> we&#39;re going to add some functions to set and 
-                    toggle our camera modes.  The following code can sit at the end of the script file: </p>
+    handle getting it there.</p>
+<p>Now open <strong>art/datablocks/aiPlayer.cs</strong> and update DemoPlayer to look like this:
+<pre>datablock PlayerData(DemoPlayer : DefaultPlayerData)
+{
+   shootingDelay = 2000;
+   mainWeapon = Lurker;
+};</pre>    
+<p>Next, in <strong>game/scripts/server/gameCore.cs</strong> find <strong>GameCore::loadOut()</strong> and comment out all of the
+    weapons except the Lurker.  Then mount the Lurker to slot 0 instead of the Ryder.
+</p>
+                  <pre>
+function GameCore::loadOut(%game, %player)
+{
+   //echo (%game @"\c4 -> "@ %game.class @" -> GameCore::loadOut");
+
+   %player.clearWeaponCycle();
+   
+   //%player.setInventory(Ryder, 1);
+   //%player.setInventory(RyderClip, %player.maxInventory(RyderClip));
+   //%player.setInventory(RyderAmmo, %player.maxInventory(RyderAmmo));
+   //%player.addToWeaponCycle(Ryder);
+
+   %player.setInventory(Lurker, 1);
+   %player.setInventory(LurkerClip, %player.maxInventory(LurkerClip));
+   %player.setInventory(LurkerAmmo, %player.maxInventory(LurkerAmmo));
+   %player.addToWeaponCycle(Lurker);
+
+   //%player.setInventory(LurkerGrenadeLauncher, 1);
+   //%player.setInventory(LurkerGrenadeAmmo, %player.maxInventory(LurkerGrenadeAmmo));
+   //%player.addToWeaponCycle(LurkerGrenadeLauncher);
+
+   //%player.setInventory(ProxMine, %player.maxInventory(ProxMine));
+   //%player.addToWeaponCycle(ProxMine);
+
+   //%player.setInventory(DeployableTurret, %player.maxInventory(DeployableTurret));
+   //%player.addToWeaponCycle(DeployableTurret);
+   
+   if (%player.getDatablock().mainWeapon.image !$= "")
+   {
+      %player.mountImage(%player.getDatablock().mainWeapon.image, 0);
+   }
+   else
+   {
+      %player.mountImage(Lurker, 0);
+   }
+}                 </pre>
+<p>Now our character will spawn with only the lurker in its inventory and will equip it automatically.</p>
+<br />
+<a name="Camera_Setup" id="A1"></a>
+<h2> <span class="mw-headline">Camera Setup</span></h2>
+<p>There are several camera modes available in Torque 3D that are generally unused because most people associate the engine with first person shooters.  While the examples and general designe of the engine are pre-disposed toward this, there are many features that let us break out of that mold.  Changing the camera modes is a good place to break out of the obvious FPS box.</p>
+<h3> <span class="mw-headline">A note on server and client command functions</span></h3>
+<hr />
+<p>There are several instances where you will use the <strong>commandToServer()</strong> and <strong>commandToClient()</strong> functions.  The remote function you wish to call must be prefixed with "serverCmd" or "clientCmd".  The first argument is the name of the remote command you wish to call <em>without</em> the related prefix, and that name <em>must</em> be quoted with single quotes.  For example:</p>
+<pre>// a server command - these are usually placed in scripts/server/commands.cs
+serverCmdmyCommand(%client){ // do something here }
+
+// from a client-side script
+commandToServer('myCommand'); // note ' instead of "
+</pre>
+<p>Additionally, you can generally separate client and server scripts by their folder locations.  Client-side scripts are in <strong>scripts/client</strong> and <strong>scripts/gui</strong> (GUI scripts are client-side by nature) and server scripts are in <strong>scripts/server</strong>.  Game assets and datablocks are all loaded server-side and verified client-side at game start.  This also applies to the content of the <strong>core</strong> folder.</p>
+<hr /><br />
+<p>First we're going to set up our camera mode framework.  In <strong>
+    scripts/server/commands.cs</strong> we&#39;re going to add some functions to set and 
+    toggle our camera modes.  The following code can be added to the end of the script file: </p>
 <pre>
 // ----------------------------------------------------------------------------
 // Camera commands
@@ -187,56 +251,66 @@ datablock PlayerData(BoomBotData : DefaultPlayerData)
 
 function serverCmdorbitCam(%client)
 {
-   %client.camera.setOrbitObject(%client.player, mDegToRad(20) @ "0 0", 0, 5.5, 5.5);
-   %client.camera.camDist = 5.5;
-   %client.camera.controlMode = "OrbitObject";
+    orbitCam(%client);
 }
+
+function orbitCam(%client)
+{
+    %client.camera.setOrbitObject(%client.player, mDegToRad(20) SPC "0 0", 0, 5.5, 5.5);
+    %client.camera.camDist = 5.5;
+    %client.camera.controlMode = "OrbitObject";
+}
+
 function serverCmdoverheadCam(%client)
 {
-   %client.camera.position = VectorAdd(%client.player.position, "0 0 30");
-   %client.camera.lookAt(%client.player.position);
-   %client.camera.controlMode = "Overhead"; 
+    overheadCam(%client);
+}
+
+function overheadCam(%client)
+{
+    %client.camera.position = VectorAdd(%client.player.position, "0 0 30");
+    %client.camera.lookAt(%client.player.position);
+    %client.camera.controlMode = "Overhead";
 }
 
 function serverCmdtoggleCamMode(%client)
 {
-   if(%client.camera.controlMode $= "Overhead")
-   {
-      %client.camera.setOrbitObject(%client.player, mDegToRad(20) @ "0 0", 0, 5.5, 5.5);
-      %client.camera.camDist = 5.5;
-      %client.camera.controlMode = "OrbitObject";
-   }
-   else if(%client.camera.controlMode $= "OrbitObject")
-   {
-      %client.camera.controlMode = "Overhead"; 
-      %client.camera.position = VectorAdd(%client.player.position, "0 0 30");
-      %client.camera.lookAt(%client.player.position);
-   }
+    toggleCamMode(%client);
+}
+
+function toggleCamMode(%client)
+{
+    if(%client.camera.controlMode $= "Overhead")
+        orbitCam(%client);
+    else if(%client.camera.controlMode $= "OrbitObject")
+        orbitCam(%client);
 }
 
 function serverCmdadjustCamera(%client, %adjustment)
 {
-   if(%client.camera.controlMode $= "OrbitObject")
-   {
-      if(%adjustment == 1)
-         %n = %client.camera.camDist + 0.5;
-      else
-         %n = %client.camera.camDist - 0.5;
-      
-      if(%n < 0.5)
-         %n = 0.5;
-         
-      if(%n > 15)
-         %n = 15.0;
-         
-      %client.camera.setOrbitObject(%client.player, %client.camera.getRotation(), 
-        0, %n, %n);
-      %client.camera.camDist = %n;
-   }
-   if(%client.camera.controlMode $= "Overhead")
-   {
-      %client.camera.position = VectorAdd(%client.camera.position, "0 0 " @ %adjustment);
-   }
+    adjustCamera(%client, %adjustment);
+}
+
+function adjustCamera(%client, %adjustment)
+{
+    if(%client.camera.controlMode $= "OrbitObject")
+    {
+        if(%adjustment == 1)
+            %n = %client.camera.camDist + 0.5;
+        else
+            %n = %client.camera.camDist - 0.5;
+        
+        if(%n < 0.5)
+            %n = 0.5;
+        
+        if(%n > 15.0)
+            %n = 15.0;
+        
+        %client.camera.setOrbitObject(%client.player, %client.camera.getRotation(), 0, %n, %n);
+        %client.camera.camDist = %n;
+    }
+    if(%client.camera.controlMode $= "Overhead")
+        %client.camera.position = VectorAdd(%client.camera.position, "0 0" SPC %adjustment);
 }</pre>
 <p>Additionally, in <strong>scripts/client/default.bind.cs</strong> we&#39;ll add some 
     keybinds and utility functions to assist in controlling the camera:</p>
@@ -262,6 +336,68 @@ function mouseZoom(%val)
 }
 
 moveMap.bind(mouse, "zaxis", mouseZoom);</pre>
+<p>
+	Now we have to track down references to <strong>Reticle</strong> and <strong>zoomReticle</strong> in <strong>scripts/client/default.bind.cs</strong> (while we're here) and <strong>scripts/client/client.cs</strong> just to clean up console errors:
+</p>
+<pre>
+// in scripts/client/default.bind.cs
+function turnOffZoom()
+{
+   ServerConnection.zoomed = false;
+   setFov(ServerConnection.getControlCameraDefaultFov());
+   //Reticle.setVisible(true);
+   //zoomReticle.setVisible(false);
+
+   // Rather than just disable the DOF effect, we want to set it to the level's
+   // preset values.
+   //DOFPostEffect.disable();
+   ppOptionsUpdateDOFSettings();
+}
+</pre>
+<pre>
+// in scripts/client/client.cs
+function clientCmdRefreshWeaponHUD(%amount, %preview, %ret, %zoomRet, %amountInClips)
+{
+   if (!%amount)
+      AmmoAmount.setVisible(false);
+   else
+   {
+      AmmoAmount.setVisible(true);
+      AmmoAmount.setText("Ammo: " @ %amount @ "/" @ %amountInClips);
+   }
+
+   if (%preview $= "")
+      WeaponHUD.setVisible(false);//PreviewImage.setVisible(false);
+   else
+   {
+      WeaponHUD.setVisible(true);//PreviewImage.setVisible(true);
+      PreviewImage.setbitmap("art/gui/weaponHud/"@ detag(%preview));
+   }
+
+   if (%ret $= "")
+   {
+      // Add braces to avoid parse error - or remove this block entirely
+      //Reticle.setVisible(false);
+   }
+   else
+   {
+      //Reticle.setVisible(true);
+      //Reticle.setbitmap("art/gui/weaponHud/"@ detag(%ret));
+   }
+
+   if (isObject(ZoomReticle))
+   {
+      if (%zoomRet $= "")
+      {
+         ZoomReticle.setBitmap("");
+      }
+      else
+      {
+         ZoomReticle.setBitmap("art/gui/weaponHud/"@ detag(%zoomRet));
+      }
+   }
+}
+</pre>
 <p>Ensure that any other binds for <strong>zaxis</strong> and <strong>alt m</strong> 
     are commented out to avoid conflicts.&nbsp; Also, if the file <strong>
     scripts/client/config.cs</strong> exists it will need to be deleted before 
@@ -279,16 +415,14 @@ moveMap.bind(mouse, "zaxis", mouseZoom);</pre>
                   Change this code by adding a third argument to the function call: </p>
                 <pre>%game.spawnPlayer(%client, %playerSpawnPoint, false);</pre>
                 <p><br />
-                  The function call being modified is <b>GameCore::spawnPlayer(%game, %this, %spawnPoint, %noControl)</b>, located in <b>game/core/scripts/server/gameCore.cs.</b> The last two arguments determine the location of spawning (%spawnPoint) and
+                  The function call being modified is <b>GameCore::spawnPlayer(%game, %this, %spawnPoint, %noControl)</b>, located in <b>game/scripts/server/gameCore.cs.</b> The last two arguments determine the location of spawning (%spawnPoint) and
                   whether or not the actor object controls the camera (%noControl). We need to address that next.</p>
                 <p>Immediately below the <strong>%game.spawnPlayer()</strong> function, add the following code:</p>
 <pre>
    // Set camera to Overhead mode   
    commandToServer('overheadCam');
 </pre>
-                <p>If you run the game, you will now be using an 
-                    orbit
-                  camera instead of an FPS view controlled by the actor. Next, we need to
+                <p>If you run the game, you will now be using an overhead camera instead of an FPS view controlled by the actor. Next, we need to
                   be able to control the on/off state of the in-game mouse cursor. Open <b>game/scripts/client/default.bind.cs</b>.  At the end of the file, add the following: </p>
                 <pre>// Turn mouse cursor on or off
 // If %val is true, the button was pressed in
@@ -317,12 +451,9 @@ moveMap.bind(keyboard, "m", "toggleMouseLook");
                   However, if you delete this file and run your game, a new one will be
                   regenerated with your updated keybinds. </p>
                 <p><br />
-                  If you start the game now, it will still default to a free
-                  flying (mouse look) camera. By hitting the 'm' key you will be able to toggle "mouse
-                  look" mode. If mouse look is on, you can control your view direction by
-                  moving the mouse. If it is off, you can move your cursor around on the
-                  screen. You can switch back to an actor controlled camera by pressing
-                  Alt + C. </p>
+                  If you start the game now, it will still default to an overhead camera. By hitting the 'm' key you will be able to toggle "mouse
+                  look" mode. If mouse look is on, you can control your view direction by moving the mouse. If it is off, you can move your cursor around on the
+                  screen. You can switch back to an actor controlled camera by pressing <strong>Alt + C</strong>. </p>
                 <p><br />
                   We will go ahead and force the cursor to be on as soon as the level loads. Open <b>game/art/gui/playGui.gui</b>. You can edit .gui files just like any other script file. Look for the <b>noCursor</b> field. Make the following change to this field: </p>
                 <pre>noCursor = "0";
@@ -331,18 +462,25 @@ moveMap.bind(keyboard, "m", "toggleMouseLook");
                   Now that you've freed up the mouse from aiming duties, it's time to put it to other uses. </p><br />
                 <a name="Mouse_Click_Reaction" id="Mouse_Click_Reaction"></a>
                 <h3> Placing Structures Using The GUI</h3>
-                <p>First, open <strong>art/gui/PlayGui.gui</strong> and find <strong>new 
-                    GuiControl(DamageHUD)</strong> toward the end of the file and remove the entire 
-                    block of code (ensure that you do not delete the main block&#39;s closing brace - it&#39;s the 
-                    one with the semi-colon after it).&nbsp; It occupies the center of the screen 
-                    when you are in play mode and it will block mouse clicks to that area.</p>
-                  <p><br />Optionally, you can remove this control element using the Gui Editor.</p>
-                  <p><br />Next, open the GUI Editor by pressing <strong>F10</strong> or by clicking the GUI Editor 
-                      button from the World Editor.</p>
+                  <p>First, open the GUI Editor from the main menu by clicking the GUI Editor button, by pressing <strong>F10</strong>, or by clicking the GUI Editor 
+                      button from within the World Editor.</p>
                   <p>
                       <img alt="" src="images/RTS_OpenGUIEditor.png" /></p>
                   <p><br />
-                      Open the <strong>Library</strong> tab, pull down the 
+                      Open the <strong>PlayGui</strong> gui by clicking the GUI collection dropdown and selecting it from the list.</p>
+                  <p>
+                      <img alt="" src="images/RTS_GuiCollection.png" /></p>
+                  <p><br />
+                  	Delete the <strong>DamageHUD</strong> element and its children.  First, either select the Reticle object from the element tree on the right or click in the center of the GUI, then delete it.
+                  </p>
+                  <p>
+                      <img alt="" src="images/RTS_DeleteDamageHUD.png" /></p>
+                <p><br />
+                	Delete the <strong>Reticle</strong> and <strong>ZoomReticle</strong> objects using the same methods.</p>
+                  <p>
+                      <img alt="" src="images/RTS_DeleteReticles.png" /></p>
+                <p><br />
+                      Now to add our simple build button.  Open the <strong>Library</strong> tab, pull down the 
                       <strong>Buttons</strong> rollout,&nbsp; then click and drag 
                       the <strong>GuiBitmapButtonCtrl</strong> onto the GUI to create a new button.</p>
                   <p>
@@ -351,17 +489,23 @@ moveMap.bind(keyboard, "m", "toggleMouseLook");
                       Select your new button and change the settings as follows:</p>
                   <p>
                       <img alt="" src="images/RTS_GUIEditorButtonSettings.png" /></p>
+                  <p>
+                      <img alt="" src="images/RTS_GUIEditorButtonSettings2.png" /></p>
+                  <p><br />
+                      Save this image in your <strong>art/gui</strong> folder:</p>
+                  <p>
+                      <img alt="" src="images/InfantryIcon.png" /></p>
                   <p><br />
                       Browse to your project&#39;s <strong>art/gui</strong> folder and select the 
-                      <strong>orcburrow.png</strong> file for 
+                      <strong>InfantryIcon.png</strong> file for 
                       the button image.</p>
                   <p><a href="images/RTS_SelectButtonImage.png" class="livethumbnail">
-                      <img alt="" src="images/RTS_SelectButtonImage.png" width="433" height="260" largewidth="866" largeheight="515"/></a></p>
+                      <img alt="" src="images/RTS_SelectButtonImage.png" width="433" height="260" largewidth="609" largeheight="442"/></a></p>
                   <p><br />
                       If you close the GUI Editor ( <strong>F10</strong> ) you should now see your 
                       button in the game UI.</p>
                   <p><a href="images/RTS_NewButtonScreenshot.png" class="livethumbnail">
-                      <img alt="" src="images/RTS_NewButtonScreenshot.png" width="350" height="272" largewidth="700" largeheight="544" /></a></p>
+                      <img alt="" src="images/RTS_NewButtonScreenshot.png" width="350" height="272" largewidth="715" largeheight="560" /></a></p>
                   <p><br />Next, open <strong>scripts/gui/playGui.cs</strong> and add the following code at 
                       the end:
                       </p>
@@ -391,7 +535,7 @@ function PlayGui::onMouseDown(%this, %pos, %start, %ray)
 
 // This function is the callback that handles our new button.  When you click it
 // the button tells the PlayGui that we're now in building placement mode.
-function orcBurrowButton::onClick(%this)
+function InfantryBld::onClick(%this)
 {
     PlayGui.placingBuilding = true;
 }
@@ -401,8 +545,12 @@ function orcBurrowButton::onClick(%this)
                    Then, in <strong>scripts/server/commands.cs</strong> add the following function to the end:</p>
 
 <pre>
-
 function serverCmdcreateBuilding(%client, %pos, %start, %ray)
+{
+    createBuilding(%client, %pos, %start, %ray);
+}
+
+function createBuilding(%client, %pos, %start, %ray)
 {
     // find end of search vector
     %ray = VectorScale(%ray, 2000);
@@ -430,26 +578,36 @@ function serverCmdcreateBuilding(%client, %pos, %start, %ray)
         %obj = new TSStatic()
         {
             position = %pos;
-            shapeName = "art/shapes/building/orcburrow.dts";
+            shapeName = "art/shapes/station/station01.dts";
             collisionType = "Visible Mesh";
             scale = "0.5 0.5 0.5";
         };
+
+        // find our nav mesh and update it so units will avoid the building
+        // that we just placed:
+        %navMesh = 0;
+        %count = MissionGroup.getCount();
+        for(%i = 0; %i < %count; %i++)
+        {
+            %missionObj = MissionGroup.getObject(%i);
+            if(%missionObj.getClassName() $= "NavMesh")
+            {
+                %navMesh = %missionObj;
+                break;
+            }
+        }
+        if (%navMesh > 0)
+            NavMeshUpdateOne(%navMesh, %obj);
 
         // Add the new object to the MissionCleanup group
         MissionCleanup.add(%obj);
     }
 }</pre>
                 <p><br />If you run the game now, you should be able to click the button, then click 
-                    on the ground to place a new orc burrow.
+                    on the ground to place a new building.
                 </p>
-                <p><a href="images/RTS_PlaceBurrow.png" class="livethumbnail">
-                    <img alt="" src="images/RTS_PlaceBurrow.png" width="308", height="240" largewidth="615" largeheight="480" /></a></p>
-                  <p><br />
-                        Optionally, you can remove the DamageHUD element from the PlayGui - it is not useful in a strategy game and it happens
-                        to block mouse clicks.
-                  </p>
-                  <p><a href="images/RTS_RemoveDamageHUD.png" class="livethumbnail">
-                  <img alt="" src="images/RTS_RemoveDamageHUD.png" width="600" height="420" largewidth="1379" largeheight="889" /></a><br /></p>
+                <p><a href="images/RTS_PlaceBuilding.png" class="livethumbnail">
+                    <img alt="" src="images/RTS_PlaceBuilding.png" width="308", height="181" largewidth="615" largeheight="363" /></a></p>
                 <a name="Mouse-Driven_Input" id="Mouse-Driven_Input"></a>
                 <h2> <span class="mw-headline">Mouse-Driven Input</span></h2>
                 <p>Without FPS controls and player aiming, we need a new way to control
@@ -473,8 +631,8 @@ function serverCmdcreateBuilding(%client, %pos, %start, %ray)
                 <br />
                 <p><i>(click to enlarge)</i> </p>
                 <a href="images/RTS_SpawnSphere.png" class="livethumbnail">
-                  <img src="images/RTS_SpawnSphere.png" width="320" height="247" largewidth="640" 
-                      largeheight="495" /></a><br />
+                  <img src="images/RTS_SpawnSphere.png" width="320" height="188" largewidth="640" 
+                      largeheight="377" /></a><br />
                 <p><br /><br />
                   You can also locate a spawn sphere by browsing the Scene Tree, under the PlayerDropPoints SimGroup: </p>
                 <p><br />
@@ -484,7 +642,7 @@ function serverCmdcreateBuilding(%client, %pos, %start, %ray)
                   If you have multiple spawn spheres, delete all except for one. We can
                   control what type of actor is spawned by changing the properties of the
                   remaining spawn sphere. Select the sphere, then change the spawnClass
-                  to <b>AIPlayer</b> and spawnDatablock to <b>BoomBotData.</b> Also, change the name of the spawn sphere to <b>PlayerSpawn</b>.&nbsp; 
+                  to <b>AIPlayer</b>. Also, change the name of the spawn sphere to <b>PlayerSpawn</b>.&nbsp; 
                     Technically this step is optional, but if you add other player types you will 
                     want to be able to specify who spawns where.&nbsp; This mechanism allows you to 
                     do that with minimal effort.</p>
@@ -513,6 +671,11 @@ function PlayGui::onRightMouseDown(%this, %pos, %start, %ray)
                 </p>
 <pre>function serverCmdmovePlayer(%client, %pos, %start, %ray)
 {
+    movePlayer(%client, %pos, %start, %ray);
+}
+
+function movePlayer(%client, %pos, %start, %ray)
+{
    //echo(" -- " @ %client @ ":" @ %client.player @ " moving");
    
    // Get access to the AI player we control
@@ -539,7 +702,7 @@ function PlayGui::onRightMouseDown(%this, %pos, %start, %ray)
       
       // Set the destination for the AI player to
       // make him move
-      %ai.setMoveDestination( %pos );
+      %ai.setPathDestination( %pos );
    }
 }
 </pre>
@@ -550,9 +713,10 @@ function PlayGui::onRightMouseDown(%this, %pos, %start, %ray)
                   on screen. </p><br />
                 <a name="Spawning_Enemy_Targets" id="Spawning_Enemy_Targets"></a>
                 <h3> <span class="mw-headline">Spawning Enemy Targets</span></h3>
-                <p>Our player looks lonely and bored. We should give him some targets, and the means of disposing them. Open <b>game/scripts/client/default.bind.cs</b>, and add the following to the bottom of the file: </p>
+                <p>Our player looks lonely and bored. We should give him some targets, and the means of disposing of them. Open 
+                    <b>game/scripts/client/default.bind.cs</b>, and add the following to the bottom of the file: </p>
                 <pre>// Spawn an AI guy when key is pressed down
-function spawnAI(%val)
+function spawnEnemy(%val)
 {
    // If key was pressed down
    if(%val)
@@ -560,16 +724,16 @@ function spawnAI(%val)
       // Create a new, generic AI Player
       // Position will be at the camera's location
       // Datablock will determine the type of actor
-      new AIPlayer() 
+      %enemy = new AIPlayer() 
       {
          position = LocalClientConnection.camera.getPosition();
-         datablock = "DefaultPlayerData";
+         datablock = "DemoPlayer";
       };
+      %game.loadOut(%enemy);
    }
 }
-
-// Bind the function spawnAI to the keyboard 'b' key
-moveMap.bind(keyboard, b, spawnAI);
+// Bind the function spawnEnemy to the keyboard 'b' key
+moveMap.bind(keyboard, b, spawnEnemy);
 </pre>
                 <p><br />
                   In the above code, a new example of accessing a client
@@ -599,57 +763,163 @@ moveMap.bind(keyboard, b, spawnAI);
                     two functions to the bottom of the script: </p>
                 <pre>function serverCmdcheckTarget(%client, %pos, %start, %ray)
 {
-   %player = %client.player;
-   
-   %ray = VectorScale(%ray, 1000);
-   %end = VectorAdd(%start, %ray);
+    %player = %client.player;
 
-   // Only care about players this time
-   %searchMasks = $TypeMasks::PlayerObjectType;
+    %ray = VectorScale(%ray, 1000);
+    %end = VectorAdd(%start, %ray);
 
-   // Search!
-   %scanTarg = ContainerRayCast( %start, %end, %searchMasks);
+    // Only care about players this time
+    %searchMasks = $TypeMasks::PlayerObjectType;
 
-   // If an enemy AI object was found in the scan
-   if( %scanTarg )
-   {
-      // Get the enemy ID
-      %target = firstWord(%scanTarg);
-      if(%player != %target)
-      {
-         // Cause our AI object to aim at the target
-         // offset (0, 0, 1) so you don't aim at the target's feet
-         %player.setAimObject(%target, "0 0 1");
-         
-         // Tell our AI object to fire its weapon
-         %player.setImageTrigger(0, 1);
-      }
-      else
-      {
-         serverCmdstopAttack(%client);
-      }
-   }
-   else
-   {
-      serverCmdstopAttack(%client);
-   }
+    // Search!
+    %scanTarg = ContainerRayCast( %start, %end, %searchMasks);
+
+    // If an enemy AI object was found in the scan
+    if( %scanTarg )
+    {
+        // Get the enemy ID
+        %target = firstWord(%scanTarg);
+        if(%player != %target)
+        {
+            // Cause our AI object to aim at the target
+            // offset to half unit height so you don't aim at the target's feet
+            %datablock = %target.getDatablock();
+            %offset = "0 0 "@%datablock.boundingBox.z / 2;
+            %player.setAimObject(%target, %offset);
+            %player.target = %target;
+
+            // Tell our AI object to fire its weapon
+            %player.setImageTrigger(0, 1);
+        }
+        else
+        {
+            stopAttack(%client);
+        }
+    }
+    else
+    {
+        stopAttack(%client);
+    }
 }
 
-function serverCmdstopAttack(%client)
+function stopAttack(%client)
 {
     // If no valid target was found, or left mouse
     // clicked again on terrain, stop firing and aiming
     %unit = %client.player;
     %unit.setAimObject(0);
     %unit.schedule(150, "setImageTrigger", 0, 0);
+}
+
+function serverCmdstopAttack(%client)
+{
+    stopAttack(%client);
 }</pre>
-                <p><br />
-                  Notice that we're using the full function name when calling <strong>serverCmdstopAttack()</strong> from within <strong>serverCmccheckTarget()</strong>.  Since we're in a serverCmd function we're
-                  not actually sending a command to the server because right now we <em>are</em> the server.  So in this circumstance (and, coincidentally the same applies to clientCmd functions)
-                  we just call the full function directly.  It is good to leave this as a serverCmd function because you might want the client to be able to request a unit (or 
-                  all of his units) to stop attacking in some other situation.</p>
-                <p><br />
-                  Now, your player will continuously shoot at any other player you left click on (accuracy not guaranteed). Press the 'b' key to spawn targets to shoot at and blast away. The AI player will be locked in auto-fire mode until you left click on the terrain or on another target. or on another target.</p>
+<p><br />
+Open <strong>scripts/server/weapon.cs</strong> and in <strong>WeaponImage::onFire()</strong> and update it to this:</p>
+<pre>function WeaponImage::onFire(%this, %obj, %slot)
+{
+    //echo("\c4WeaponImage::onFire( "@%this.getName()@", "@%obj.client.nameBase@", "@%slot@" )");
+
+    // Make sure we have valid data
+    if (!isObject(%this.projectile))
+    {
+        error("WeaponImage::onFire() - Invalid projectile datablock");
+        return;
+    }
+
+    // Decrement inventory ammo. The image's ammo state is updated
+    // automatically by the ammo inventory hooks.
+    if ( !%this.infiniteAmmo )
+        %obj.decInventory(%this.ammo, 1);
+
+    // Get the player's velocity, we'll then add it to that of the projectile
+    %objectVelocity = %obj.getVelocity();
+
+    %numProjectiles = %this.projectileNum;
+    if (%numProjectiles == 0)
+        %numProjectiles = 1;
+
+    if (%obj.isMemberOfClass("AIPlayer") && isObject(%obj.target))
+    {
+        %vec = %obj.getVectorTo(%obj.target.position);
+        if(%obj.aimOffset)
+            %vec = VectorAdd(%vec, "0 0 "@%obj.aimOffset);
+        %vec = VectorNormalize(%vec);
+    }
+    else
+    {
+        // getting the straight ahead aiming point of the gun
+        %vec = %obj.getMuzzleVector(%slot);
+    }
+
+    for (%i = 0; %i < %numProjectiles; %i++)
+    {
+        if (%this.projectileSpread)
+        {
+            // We'll need to "skew" this projectile a little bit.  We start by
+            // Then we'll create a spread matrix by randomly generating x, y, and z
+            // points in a circle
+            %matrix = "";
+            for(%j = 0; %j < 3; %j++)
+                %matrix = %matrix @ (getRandom() - 0.5) * 2 * 3.1415926 * %this.projectileSpread @ " ";
+            %mat = MatrixCreateFromEuler(%matrix);
+
+            // Which we'll use to alter the projectile's initial vector with
+            %muzzleVector = MatrixMulVector(%mat, %vec);
+        }
+        else
+        {
+            // Weapon projectile doesn't have a spread factor so we fire it using
+            // the straight ahead aiming point of the gun
+            %muzzleVector = %vec;
+        }
+
+        // Add player's velocity
+        %muzzleVelocity = VectorAdd(
+        VectorScale(%muzzleVector, %this.projectile.muzzleVelocity),
+        VectorScale(%objectVelocity, %this.projectile.velInheritFactor));
+
+        // Create the projectile object
+        %p = new (%this.projectileType)()
+        {
+            dataBlock = %this.projectile;
+        };
+        %p.initialVelocity = %muzzleVelocity;
+        %p.initialPosition = %obj.getMuzzlePoint(%slot);
+        %p.sourceObject = %obj;
+        %p.sourceSlot = %slot;
+        %p.client = %obj.client;
+        %p.sourceClass = %obj.getClassName();
+        MissionCleanup.add(%p);
+    }
+}</pre>
+<p>Next, open <strong>scripts/server/aiPlayer.cs</strong> and add this method:</p>
+<pre>// Return position vector to a position
+/// <summary>
+/// This function calculates the vector to %pos from eye point
+/// <summary>
+/// <param name="pos">The target position.</param>
+/// <return>Returns a 3D vector from eye pos to target pos (not normalized).</return>
+function AIPlayer::getVectorTo(%this, %target)
+{
+    if (getWordCount(%pos) < 2 && isObject(%target))
+        %pos = %target.getPosition();
+
+    %z = getWord(%this.boundingBox, 2) / 2;
+    %offset = "0 0" SPC %z;
+    
+    %vec = VectorAdd(%offset, %this.getPosition());
+
+    %z = getWord(%target.boundingBox, 2) / 2;
+    %offset = "0 0" SPC %z;
+    
+    %pos = VectorAdd(%offset, %pos);
+    
+    return VectorSub(%pos, %vec);
+}</pre>
+<p><br />
+Now, your player will continuously shoot at any other player you left click on (accuracy not guaranteed). Press the 'b' key to spawn targets to shoot at and blast away. The AI player will be locked in auto-fire mode until you left click on the terrain or on another target. or on another target.</p>
                 <p><br />
                   We now have the base functionality for moving the player and the camera, selecting a target, and attacking is now complete.</p><br />
                 <a name="Tweaking_Attacks" id="Tweaking_Attacks"></a>
@@ -657,8 +927,8 @@ function serverCmdstopAttack(%client)
                 <p>You might have noticed some flaws with the base code: </p>
                 <ul>
                   <li>The first shot usually misses </li>
-                  <li>AI keeps shooting after enemy is dead </li>
-                  <li>Enemy does not appear to &quot;die&quot; when health reaches 0</li>
+                  <li>AI only fires a single shot at a time </li>
+                  <li>Enemy may not appear to &quot;die&quot; when health reaches 0</li>
                 </ul>
                 <p><br />
                   We are going to try and correct these one at a time using
@@ -716,67 +986,7 @@ function serverCmdstopAttack(%client)
                   should definitely do so. Save, then run your game to test the changes
                   made to the attack routine. Your AI should now be facing the target on
                   the first shot, and only attack when you click on the target. </p>
-                <p><br />
-                  There is one more change we can make to make the combat provide more feedback. Each enemy AI starts with health, which is diminished each time it gets shot. The Full template this tutorial is based on is originally intended for a FPS deathmatch game. When an actor dies, a death animation is played.</p>
-                  <br />
-                  <p>The death animation code can be found in <b>game/scripts/server/player.cs</b>. Open this file, then scroll down to the following function:</p>
-                  <br />
-                  <pre>
-function Player::playDeathAnimation(%this)
-{
-if (isObject(%this.client))
-   {
-      if (%this.client.deathIdx++ > 11)
-         %this.client.deathIdx = 1;
-      %this.setActionThread("Death" @ %this.client.deathIdx);
-   }
-   else
-   {
-      %rand = getRandom(1, 11);
-      %this.setActionThread("Death" @ %rand);
-   }
-}</pre>
-                <p><br />
-                The template uses Gideon as the stock actor. The model ships with 11 death animations, which are labeled as "death#" (where # is 1 - 11). This works well for a Player constantly dying, but for an AIPlayer in this tutorial, we only need 1 death animation. This tutorial also mainly works as a client side (single player) prototype.</p><br />
-                <p>In simpler terms, we do not need to use the death index (.deathIdx) or %client variables. We can simply call the first death animation available. Change the 
-                    <strong>::playDeathAnimation(...)</strong> function to the following:</p>
-                <pre>
-function Player::playDeathAnimation(%this)
-{
-    %this.setActionThread("Death1");
-}
-</pre>
-                <br />
-                <p>Now, when the target AI loses all its health it will play a death animation and eventually disappear.</p>
-                  <p><br />
-                  Next, you may notice that the AI units still have terrible aim.  This is because the weapons are all set up to be used in first person mode.  Any weapon that you intend to use with these
-                  AI units needs to be modified before they can be used effectively.  Find your weapon datablock files in <strong>game/art/datablocks/weapons</strong> and search for 
-                  <strong>LurkerWeaponImage</strong> (to use the Lurker datablock file as an example) then find  </strong><strong>useEyeNode</strong> and <strong>firstPerson</strong>. 
-                  Change any instances of these from <strong>true</strong> to <strong>false</strong>.  You can also experiment with <strong>correctMuzzleVector</strong> as well.  You should 
-                  find a block like the following, except at the end you will see some additions that should help.
-                  </p>
-<pre>
-   // Specify mount point & offset for 3rd person, and eye offset
-   // for first person rendering.
-   mountPoint = 0;
-   firstPerson = false;
-   useEyeNode = false;
-   animateOnServer = true;
-
-   // Add these to get BoomBot to aim correctly
-   useEyeOffset = true;
-   eyeOffset = "0 0 -0.35";
-</pre>                  
-                  <p><br />
-                  Fiddling with the eyeOffset vector may provide fine-tuning control over aiming, but I haven't been able to see any drastic difference.  Don't be afraid to experiment.
-                  </p>
-                  <p><br />
-                  As a bit of an aside, if you intend to be able to control units in a game with mixed AI and human players where the humans might be in first person control you will 
-                  want to make a copy of all of your weapon datablocks and make the above modifications to them instead.  You'll have to name your new datablocks to something like 
-                  <strong>BotLurkerWeaponImage</strong> and load your AI players out with these versions of the weapons instead of the unmodified weapons that you use for the human 
-                  players.
-                  </p>
-                  <br />
+                <p>
                 <a name="Destination_Markers" id="Destination_Markers"></a>
                 <h2> <span class="mw-headline">Destination Markers</span></h2>
                 <p>In most RTS or Hack &amp; Slash games, some kind of marker is placed
@@ -791,7 +1001,9 @@ function Player::playDeathAnimation(%this)
                 <a name="Creating_a_Material" id="Creating_a_Material"></a>
                 <h3> <span class="mw-headline">Creating a Material</span></h3>
                 <p>To get started on our marker creation, run your project in the <strong>World Editor</strong>. Next, open the 
-                    <strong>Material Editor</strong> and click on the <i>Create New Material</i> button. </p>
+                    <strong>Material Editor</strong>:</p>
+                  <img src="images/RTS_MaterialEditor.png" border="0" /> </p>
+<p>                     and click on the <i>Create New Material</i> button. </p>
                 <p><br />
                   <img alt="Image:MarkerNewMaterialButton.jpg" 
                         src="images/RTS_MarkerNewMaterialButton.png" border="0" /> </p>
@@ -803,14 +1015,15 @@ function Player::playDeathAnimation(%this)
                 <p><br />
                   <i>(click to enlarge)</i> </p>
                 <a href="images/RTS_MarkerFile.png" class="livethumbnail">
-                  <img src="images/RTS_MarkerFile.png" width="320" height="247" largewidth="640" 
-                      largeheight="495" /></a><br />
+                  <img src="images/RTS_MarkerFile.png" width="320" height="179" largewidth="640" 
+                      largeheight="358" /></a><br />
                 <p><br />
                   Your new material is nearly complete. However, you should notice that
                   the marker file and the material do not look the same. Compare the two: </p>
                 <p><br />
                   <b>Marker File</b> </p>
-                <p><img alt="Image:g_marker.png" src="images/G_marker.png" border="0" height="253" width="253" /> </p>
+                <p><img alt="Image:g_marker.png" src="images/destDecal.png" border="0" height="253" width="253" /> </p>
+                <p>You can download this image to use by right-clicking and selecting "save image as" from the context menu.</p>
                 <p><br />
                   <b>Material</b> </p>
                 <p><img alt="Image:gMaterialBefore.jpg" src="images/RTS_GMaterialBefore.png" 
@@ -830,18 +1043,19 @@ function Player::playDeathAnimation(%this)
                       <img alt="" dir="ltr" src="images/RTS_DecalMaterialPreview.png" /></p>
                 <p><br />
                   You are finished with the material. Click save the save button, which will write out the following data to <b>game/art/material.cs:</b> </p>
-                <pre>singleton Material(gg_marker)
+                <pre>singleton Material(DECAL_destDecal)
 {
    mapTo = "unmapped_mat";
-   diffuseMap[0] = "art/markers/g_marker.png";
+   diffuseMap[0] = "art/decals/destDecal.png";
+   castShadows = "0";
+   translucent = "1";
+   translucentZWrite = "1";
    alphaTest = "1";
    alphaRef = "80";
+   showFootprints = "0";
+   materialTag0 = "Miscellaneous";
 };
 </pre>
-                <p><br />
-                  This is the benefit of using the visual editor to create your
-                  materials and decals, instead of manually writing them out in
-                  TorqueScript. Let's move on to creating the decal. </p><br />
                 <a name="Creating_a_Decal" id="Creating_a_Decal"></a>
                 <h3> <span class="mw-headline">Creating a Decal</span></h3>
                 <p>To create a marker decal, run the <strong>World Editor</strong> and then open the
@@ -864,14 +1078,11 @@ function Player::playDeathAnimation(%this)
                 <p><br />
                   <i>(click to enlarge)</i> </p>
                 <a href="images/RTS_SelectGGMarker.png" class="livethumbnail">
-                  <img src="images/RTS_SelectGGMarker.png" width="320" height="247" largewidth="796" largeheight="580" /></a><br />
+                  <img src="images/RTS_SelectGGMarker.png" width="320" height="231" largewidth="640" largeheight="463" /></a><br />
                 <p><br />
                   The Decal Editor's preview box will display what your new decal will look like in the scene. </p>
                 <p><br />
-                  <i>(click to enlarge)</i> </p>
-                <a href="images/RTS_GGDecalComplete.png" class="livethumbnail">
-                  <img src="images/RTS_GGDecalComplete.png" width="320" height="247" 
-                      largewidth="640" largeheight="495" /></a><br />
+                  <img src="images/RTS_GGDecalComplete.png" /></a><br />
                 <p><br />
                   That's all that needs to be done to create the decal. Save your level, and your decal data will automatically be written out to <b>game/art/decals/managedDecalData.cs</b>: </p>
                 <pre>datablock DecalData(gg_decal)
@@ -884,41 +1095,39 @@ function Player::playDeathAnimation(%this)
                 <h3> <span class="mw-headline">Spawning the Marker</span></h3>
                 <p>Now that we have a destination marker, we need to add it upon
                   clicking on the terrain and then delete it when our player reaches its
-                  destination. Start by opening <b>game/scripts/gui/playGui.cs</b>. Find the <strong>PlayGui::onRightMouseDown</strong> function. At the end of this function, add the following code: </p>
-                <pre>     %ray = VectorScale(%ray, 1000);
-    %end = VectorAdd(%start, %ray);
-
-    // only care about terrain objects
-    %searchMasks = $TypeMasks::TerrainObjectType | $TypeMasks::StaticTSObjectType | 
-        $TypeMasks::InteriorObjectType | $TypeMasks::ShapeBaseObjectType |
-        $TypeMasks::StaticObjectType;
-
-    // search!
-    %scanTarg = ContainerRayCast( %start, %end, %searchMasks);
-
-    if (%scanTarg)
+                  destination. Start by opening <b>scripts/client/client.cs</b>. At the end of this file, add the following code: </p>
+                <pre>function clientCmdsetDestDecal(%unit, %position, %norm)
+{
+    // If the AI player already has a decal (0 or greater)
+    // tell the decal manager to delete the instance of the gg_decal
+    if(%unit.decal > -1)
     {
-        // Get access to the AI player we control
-        %ai = LocalClientConnection.player;
+        decalManagerRemoveDecal(%unit.decal);
+    }
 
-        // Get the X,Y,Z position of where we clicked
-        %pos = getWords(%scanTarg, 1, 3);
-
-        // Get the normal of the location we clicked on
-        %norm = getWords(%scanTarg, 4, 6);
-
-        // If the AI player already has a decal (0 or greater)
-        // tell the decal manager to delete the instance of the gg_decal
-        if(%ai.decal > -1)
-        {
-            decalManagerRemoveDecal(%ai.decal);
-        }
-
-        // Create a new decal using the decal manager
-        // arguments are (Position, Normal, Rotation, Scale, Datablock, Permanent)
-        // AddDecal will return an ID of the new decal, which we will
-        // store in the player
-        %ai.decal = decalManagerAddDecal(%pos, %norm, 0, 1, "gg_decal", true);
+    // Create a new decal using the decal manager
+    // arguments are (Position, Normal, Rotation, Scale, Datablock, Permanent)
+    // AddDecal will return an ID of the new decal, which we will
+    // store in the player
+    %unit.decal = decalManagerAddDecal(%position, %norm, 0, 1, "destDecal", true);
+}</pre>
+<p><br />
+Then, in <strong>scripts/server/commands.cs</strong>, modify <strong>movePlayer()</strong> to tell the client to spawn the decal:</p>
+<pre>
+    // .... 
+    // If the terrain object was found in the scan
+    if( %scanTarg )
+    {
+	    %pos = getWords(%scanTarg, 1, 3);
+    	// Get the normal of the location we clicked on
+	    %norm = getWords(%scanTarg, 4, 6);
+    
+        // Set the destination for the AI player to
+        // make him move
+        %ai.setPathDestination( %pos );
+        
+        // add this!
+        commandToClient(%client, 'setDestDecal', %ai, %pos, %norm);
     }
 </pre>
                 <p><br />
@@ -926,26 +1135,13 @@ function Player::playDeathAnimation(%this)
                   terrain, the GarageGames symbol should render as a decal at the
                   destination. </p>
                 <p><br />
-                  <i>(click to enlarge)</i> </p>
-                <a href="images/RTS_MarkerDestination.png" class="livethumbnail">
-                  <img src="images/RTS_MarkerDestination.png" width="320" height="247" 
-                      largewidth="640" largeheight="495" /></a><br /><br /><br />
+                <img src="images/RTS_MarkerDestination.png" /></a><br /><br /><br />
                 <a name="Erasing_the_Marker" id="Erasing_the_Marker"></a>
                 <h3> <span class="mw-headline">Erasing the Marker</span></h3>
-                <p>The last thing we need to do is erase the destination marker when our AI player gets to it. Open the <b>game/art/datablocks/BoomBot.cs</b> file, then add the following: </p>
-                <pre>// This is a callback function
-// This is automatically called by the engine as part 
-// of the AI routine
-// %this - The BoomBotData datablock
-// %obj - The instance of this datablock (our AI Player)
-function BoomBotData::onReachDestination(%this, %obj)
-{
-   // If there was a decal placed, then it was
-   // stored in this %obj variable (see playGui.cs)
-   // Erase the decal using the decal manager
+                <p>The last thing we need to do is erase the destination marker when our AI player gets to it. Open the <b>scripts/server/aiPlayer.cs</b> file, then add the following to the end of <strong>DemoPlayer::onReachDestination()</strong>: </p>
+                <pre>
    if( %obj.decal &gt; -1 )
       decalManagerRemoveDecal(%obj.decal);
-}
 </pre>
                 <p><br />
                   Now, when the AI player reaches its destination the marker will be deleted. </p><br />
@@ -961,11 +1157,15 @@ function BoomBotData::onReachDestination(%this, %obj)
                     <strong>serverCmdorbitCam()</strong> function:</p>
                 <pre>function serverCmdorbitCam(%client)
 {
-   %client.camera.setOrbitObject(%client.player, mDegToRad(20) @ "0 0", 0, 5.5, 5.5);
-   %client.camera.camDist = 5.5;
-   %client.camera.controlMode = "OrbitObject";
+    orbitCam(%client);
 }
-</pre>
+
+function orbitCam(%client)
+{
+    %client.camera.setOrbitObject(%client.player, mDegToRad(20) SPC "0 0", 0, 5.5, 5.5);
+    %client.camera.camDist = 5.5;
+    %client.camera.controlMode = "OrbitObject";
+}</pre>
                 <p><br />
                   Lets break this command down.
                     %client.camera.setOrbitObject() puts the camera into OrbitObject mode. The first 
@@ -997,11 +1197,15 @@ function BoomBotData::onReachDestination(%this, %obj)
                       serverCmdoverheadCam()</strong> function:</p>
                 <pre>function serverCmdoverheadCam(%client)
 {
-   %client.camera.position = VectorAdd(%client.player.position, "0 0 30");
-   %client.camera.lookAt(%client.player.position);
-   %client.camera.controlMode = "Overhead"; 
+    overheadCam(%client);
 }
-</pre>
+
+function overheadCam(%client)
+{
+    %client.camera.position = VectorAdd(%client.player.position, "0 0 30");
+    %client.camera.lookAt(%client.player.position);
+    %client.camera.controlMode = "Overhead";
+}</pre>
                 <p><br />
                   With this setup, the camera will be free to move around with the
                   standard "wasd" controls, but it will not move vertically in the world.
@@ -1015,27 +1219,29 @@ function BoomBotData::onReachDestination(%this, %obj)
                 <pre>// Adjusts the height of the camera using the mouse wheel
 function serverCmdadjustCamera(%client, %adjustment)
 {
-   if(%client.camera.controlMode $= "OrbitObject")
-   {
-      if(%adjustment == 1)
-         %n = %client.camera.camDist + 0.5;
-      else
-         %n = %client.camera.camDist - 0.5;
-      
-      if(%n < 0.5)
-         %n = 0.5;
-         
-      if(%n > 15)
-         %n = 15.0;
-         
-      %client.camera.setOrbitObject(%client.player, %client.camera.getRotation(), 
-        0, %n, %n);
-      %client.camera.camDist = %n;
-   }
-   if(%client.camera.controlMode $= "Overhead")
-   {
-      %client.camera.position = VectorAdd(%client.camera.position, "0 0 " @ %adjustment);
-   }
+    adjustCamera(%client, %adjustment);
+}
+
+function adjustCamera(%client, %adjustment)
+{
+    if(%client.camera.controlMode $= "OrbitObject")
+    {
+        if(%adjustment == 1)
+            %n = %client.camera.camDist + 0.5;
+        else
+            %n = %client.camera.camDist - 0.5;
+        
+        if(%n < 0.5)
+            %n = 0.5;
+        
+        if(%n > 15.0)
+            %n = 15.0;
+        
+        %client.camera.setOrbitObject(%client.player, %client.camera.getRotation(), 0, %n, %n);
+        %client.camera.camDist = %n;
+    }
+    if(%client.camera.controlMode $= "Overhead")
+        %client.camera.position = VectorAdd(%client.camera.position, "0 0" SPC %adjustment);
 }
 </pre>
                 <p>Notice that this function catches the camera mode and uses an appropriate method 
@@ -1078,32 +1284,66 @@ function serverCmdadjustCamera(%client, %adjustment)
 <pre>
 function serverCmdorbitCam(%client)
 {
-   %client.camera.setOrbitObject(%client.player, mDegToRad(20) @ "0 0", 0, 5.5, 5.5);
-   %client.camera.camDist = 5.5;
-   %client.camera.controlMode = "OrbitObject";
+    orbitCam(%client);
+}
+
+function orbitCam(%client)
+{
+    %client.camera.setOrbitObject(%client.player, mDegToRad(20) SPC "0 0", 0, 5.5, 5.5);
+    %client.camera.camDist = 5.5;
+    %client.camera.controlMode = "OrbitObject";
 }
 
 function serverCmdoverheadCam(%client)
 {
-   %client.camera.position = VectorAdd(%client.player.position, "0 0 30");
-   %client.camera.lookAt(%client.player.position);
-   %client.camera.controlMode = "Overhead"; 
+    overheadCam(%client);
+}
+
+function overheadCam(%client)
+{
+    %client.camera.position = VectorAdd(%client.player.position, "0 0 30");
+    %client.camera.lookAt(%client.player.position);
+    %client.camera.controlMode = "Overhead";
 }
 
 function serverCmdtoggleCamMode(%client)
 {
-   if(%client.camera.controlMode $= "Overhead")
-   {
-      %client.camera.setOrbitObject(%client.player, mDegToRad(20) @ "0 0", 0, 5.5, 5.5);
-      %client.camera.camDist = 5.5;
-      %client.camera.controlMode = "OrbitObject";
-   }
-   else if(%client.camera.controlMode $= "OrbitObject")
-   {
-      %client.camera.controlMode = "Overhead"; 
-      %client.camera.position = VectorAdd(%client.player.position, "0 0 30");
-      %client.camera.lookAt(%client.player.position);
-   }
+    toggleCamMode(%client);
+}
+
+function toggleCamMode(%client)
+{
+    if(%client.camera.controlMode $= "Overhead")
+        orbitCam(%client);
+    else if(%client.camera.controlMode $= "OrbitObject")
+        orbitCam(%client);
+}
+
+function serverCmdadjustCamera(%client, %adjustment)
+{
+    adjustCamera(%client, %adjustment);
+}
+
+function adjustCamera(%client, %adjustment)
+{
+    if(%client.camera.controlMode $= "OrbitObject")
+    {
+        if(%adjustment == 1)
+            %n = %client.camera.camDist + 0.5;
+        else
+            %n = %client.camera.camDist - 0.5;
+        
+        if(%n < 0.5)
+            %n = 0.5;
+        
+        if(%n > 15.0)
+            %n = 15.0;
+        
+        %client.camera.setOrbitObject(%client.player, %client.camera.getRotation(), 0, %n, %n);
+        %client.camera.camDist = %n;
+    }
+    if(%client.camera.controlMode $= "Overhead")
+        %client.camera.position = VectorAdd(%client.camera.position, "0 0" SPC %adjustment);
 }
 </pre>
                 <p><br />
@@ -1115,15 +1355,134 @@ commandToServer('overheadCam');
 </pre><br />
                 <a name="GoingRTS" id="A3"></a>
                 <h2> <span class="mw-headline">Going More Real-Time Strategy</span></h2>
-                <p>Here we&#39;re going to talk about what to do with that orc burrow.&nbsp; We need a 
-                    place to get more friendly units and the burrow seems the logical place, but it 
+                <p>Here we&#39;re going to talk about what to do with that station.&nbsp; We need a 
+                    place to get more friendly units and the station seems the logical place, but it 
                     needs a few adjustments to work.&nbsp; I&#39;m not going into resource costs or 
-                    build times - call them exercises for the reader - we&#39;re just going to pop out a 
-                    new friendly unit when you left-click on the burrow.</p>
-                  <p><br />First, we&#39;ll add some code to the <strong>serverCmdcheckTarget()</strong function to handle spawning.&nbsp; The 
-                    function should look something like this:</p>
+                    build times - we'll cover that in part 2 - we&#39;re just going to pop out a 
+                    new friendly unit when you left-click on the station.</p>
+<p><br />First, we'll overhaul <strong>GameCore::spawnPlayer()</strong> in <strong>scripts/server/gameCore.cs</strong>.  We need to ditch the vestigial player spawn that comes with the FPS stuff and just drop the new player's camera directly at a spawn point.  We're pretty much going to gut this since we don't need anything that has to do with setting up a player - just the client's camera.</p>
+<pre>function GameCore::spawnPlayer(%game, %client, %spawnPoint, %noControl)
+{
+    //echo (%game @"\c4 -> "@ %game.class @" -> GameCore::spawnPlayer");
 
-<pre>function serverCmdcheckTarget(%client, %pos, %start, %ray)
+    if (isObject(%client.player))
+    {
+        // The client should not already have a player. Assigning
+        // a new one could result in an uncontrolled player object.
+        error("Attempting to create a player for a client that already has one!");
+    }
+
+    // Attempt to treat %spawnPoint as an object
+    if (getWordCount(%spawnPoint) == 1 && isObject(%spawnPoint))
+    {
+        // Defaults
+        %spawnClass      = $Game::DefaultPlayerClass;
+        %spawnDataBlock  = $Game::DefaultPlayerDataBlock;
+
+        // Overrides by the %spawnPoint
+        if (isDefined("%spawnPoint.spawnClass"))
+        {
+            %spawnClass = %spawnPoint.spawnClass;
+            %spawnDataBlock = %spawnPoint.spawnDatablock;
+        }
+        else if (isDefined("%spawnPoint.spawnDatablock"))
+        {
+            // This may seem redundant given the above but it allows
+            // the SpawnSphere to override the datablock without
+            // overriding the default player class
+            %spawnDataBlock = %spawnPoint.spawnDatablock;
+        }
+
+        %spawnProperties = %spawnPoint.spawnProperties;
+        %spawnScript     = %spawnPoint.spawnScript;
+
+        %client.spawnCamera(%spawnPoint);
+    }
+
+    // If the player's client has some owned turrets, make sure we let them
+    // know that we're a friend too.
+    if (%client.ownedTurrets)
+    {
+        for (%i=0; %i<%client.ownedTurrets.getCount(); %i++)
+        {
+            %turret = %client.ownedTurrets.getObject(%i);
+            %turret.addToIgnoreList(%player);
+        }
+    }
+
+    if (!isDefined("%client.skin"))
+    {
+        // Get available skins
+        %availableSkins = %spawnDataBlock.availableSkins; // TAB delimited list of skin names
+
+        // Set skin based on client's team.  If client's team is not set, set it to 1
+        if(%client.team $= "")
+            %client.team = 1;
+        %client.skin = addTaggedString( getField(%availableSkins, %client.team) );
+    }
+
+    if(!isObject(%client.TeamList))
+    {
+        %client.TeamList = new SimSet();
+        MissionCleanup.add(%client.TeamList);
+    }
+    %client.TeamList.add(%player);
+
+    // Give the client control of the camera if in the editor
+    if( $startWorldEditor )
+    {
+        %control = %client.camera;
+        %control.mode = "Fly";
+        EditorGui.syncCameraGui();
+    }
+    else
+    {
+        %control = %client.camera;
+        overheadCam(%client);
+    }
+
+    // Allow the player/camera to receive move data from the GameConnection.  Without this
+    // the user is unable to control the player/camera.
+    if (!isDefined("%noControl"))
+        %client.setControlObject(%control);
+    if (isObject(%spawnPoint))
+        %control.setTransform(%spawnPoint.getTransform());
+}
+</pre>
+<p><br />With this all we have to do is grab the spawn sphere in the mission editor and place it so that it is where we want our player camera to spawn.  Open the mission in the <strong>Mission Editor</strong> and select the spawn sphere:</p>
+<p><br />
+  <img alt="" src="images/RTS_SelectSpawnSphere.png" /></p>
+
+<p><br />Now click <strong>Object</strong> in the menu, then find <strong>Drop Location > at Camera w/Rotation</strong> and click that.</p>
+<p><br />
+  <img alt="" src="images/RTS_DropAtLocWithRot.png" /></p>
+<p><br />Finally, click <strong>Object</strong> and then click <strong>Drop Selection</strong>.</p>
+<p><br />
+  <img alt="" src="images/RTS_DropObject.png" /></p>
+<p><br />The spawn sphere is now placed where the camera is and it is facing the same direction as the camera.  When the player enters the mission his camera will be placed at the spawn sphere's location with its rotation.</p>
+<p><br />Now, we&#39;ll add some code to the <strong>serverCmdcheckTarget()</strong> function to handle spawning.  The function should look something like this:</p>
+<pre>
+function attack(%client, %unit)
+{
+    %target = %unit.getAimObject();
+    if (%target.getState() $= "Dead")
+    {
+        %unit.setAimObject(0);
+    }
+    else
+    {
+        %unit.setImageTrigger(0, 1);
+        %unit.schedule(64, "setImageTrigger", 0, 0);
+        schedule(128, 0, "attack", %client, %unit, %target);
+    }
+}
+
+function serverCmdcheckTarget(%client, %pos, %start, %ray)
+{
+	checkTarget(%client, %pos, %start, %ray);
+}
+
+function checkTarget(%client, %pos, %start, %ray)
 {
     %ray = VectorScale(%ray, 1000);
     %end = VectorAdd(%start, %ray);
@@ -1142,7 +1501,7 @@ commandToServer('overheadCam');
         %target = firstWord(%scanTarg);
         if (%target.class $= "barracks")
         {
-            serverCmdspawnTeammate(%client, %target);
+            spawnTeammate(%client, %target);
         }
         else if (%target.getClassName() $= "AIPlayer")
         {
@@ -1151,10 +1510,10 @@ commandToServer('overheadCam');
                 // Cause our AI object to aim at the target
                 // offset (0, 0, 1) so you don't aim at the target's feet
 
-                if (isObject(Team1List))
+                if (isObject(%client.TeamList))
                 {
                     %c = 0;
-                    %unit = Team1List.getObject(0);
+                    %unit = %client.TeamList.getObject(0);
                     while (isObject(%unit))
                     {
                         if (%unit.isSelected)
@@ -1166,10 +1525,10 @@ commandToServer('overheadCam');
                             %unit.setAimObject(%target, %offset);
 
                             // Tell our AI object to fire its weapon
-                            %unit.setImageTrigger(0, 1);
+                            attack(%client, %unit);
                         }
                         %c++;
-                        %unit = Team1List.getObject(%c);
+                        %unit = %client.TeamList.getObject(%c);
                     }
                 }
             }
@@ -1189,60 +1548,43 @@ commandToServer('overheadCam');
         }
         else
         {
-            serverCmdstopAttack(%client);
+            stopAttack(%client);
             if (!$SelectToggled)
                 cleanupSelectGroup();
         }
     }
     else
     {
-        serverCmdstopAttack(%client);
+        stopAttack(%client);
         if (!$SelectToggled)
             cleanupSelectGroup();
     }
 }
 </pre>
-                <p>
-                    I also added some support code for handling selection of multiple units and a little bit for 
-                    spawning new bots from our orc burrows.
-                </p>
-
-                <p><br />
-                    Add the following code in  <strong>scripts/server/gameCore.cs</strong> at the end of the <strong>GameCore::spawnPlayer()</strong> function.
-                </p>
-
-<pre>
-   %player.team = 1;
-
-    if (!isObject(Team1List))
-    {
-        new SimSet(Team1List);
-        MissionCleanup.add(Team1List);
-    }
-    
-    Team1List.add(%player);
-</pre>
-
-                <p><br />
-                    This ties in with our new multi-select system so that you can continue to select and control the original player object.
-                </p>
-
-                <p><br />
-                    We'll need to revisit <strong>serverCmdstopAttack()</strong> to handle our multi-select system, too.  It should look like this:
-                </p>
+<p>
+    We've also added some support code for handling selection of multiple units and a little bit for 
+    spawning new bots from our stations.
+</p>
+<p><br />
+    We'll need to revisit <strong>serverCmdstopAttack()</strong> to handle our multi-select system, too.  It should look like this:
+</p>
 <pre>
 function serverCmdstopAttack(%client)
 {
+    stopAttack(%client);
+}
+
+function stopAttack(%client)
+{
     // If no valid target was found, or left mouse
     // clicked again on terrain, stop firing and aiming
-    for (%c = 0; %c < Team1List.getCount(); %c++)
+    for (%c = 0; %c < %client.TeamList.getCount(); %c++)
     {
-        %unit = Team1List.getObject(%c);
+        %unit = %client.TeamList.getObject(%c);
         %unit.setAimObject(0);
         %unit.schedule(150, "setImageTrigger", 0, 0);
     }
-}
-</pre>
+}</pre>
 
                 <p><br />
                     Next, we'll add some more server commands to help us with managing our army.&nbsp;&nbsp; 
@@ -1252,6 +1594,11 @@ function serverCmdstopAttack(%client)
 
 <pre>
 function serverCmdcreateBuilding(%client, %pos, %start, %ray)
+{
+	createBuilding(%client, %pos, %start, %ray);
+}
+
+function createBuilding(%client, %pos, %start, %ray)
 {
     // find end of search vector
     %ray = VectorScale(%ray, 2000);
@@ -1272,11 +1619,25 @@ function serverCmdcreateBuilding(%client, %pos, %start, %ray)
         %obj = new TSStatic()
         {
             position = %pos;
-            shapeName = "art/shapes/building/orcburrow.dts";
+            shapeName = "art/shapes/station/station01.dts";
             class = "barracks";
             collisionType = "Visible Mesh";
             scale = "0.5 0.5 0.5";
         };
+
+        %navMesh = 0;
+        %count = MissionGroup.getCount();
+        for(%i = 0; %i < %count; %i++)
+        {
+            %missionObj = MissionGroup.getObject(%i);
+            if(%missionObj.getClassName() $= "NavMesh")
+            {
+                %navMesh = %missionObj;
+                break;
+            }
+        }
+        if (%navMesh > 0)
+            NavMeshUpdateOne(%navMesh, %obj);
 
         // Add the new object to the MissionCleanup group
         MissionCleanup.add(%obj);
@@ -1288,7 +1649,7 @@ function serverCmdcreateBuilding(%client, %pos, %start, %ray)
             {
                 canSave = "1";
                 canSaveDynamicFields = "1";
-                    enabled = "1";
+                enabled = "1";
             };
 
             MissionGroup.add(Team1SpawnGroup);
@@ -1298,8 +1659,8 @@ function serverCmdcreateBuilding(%client, %pos, %start, %ray)
         %point = new SpawnSphere(%spawnName)
         {
             radius = "1";
-            dataBlock      = "SpawnSphereMarker";
-            spawnClass     = $Game::DefaultPlayerClass;
+            dataBlock = "SpawnSphereMarker";
+            spawnClass = $Game::DefaultPlayerClass;
             spawnDatablock = $Game::DefaultPlayerDataBlock;
         };
         %point.position = VectorAdd(%obj.getPosition(), "0 5 2");
@@ -1312,8 +1673,12 @@ function serverCmdcreateBuilding(%client, %pos, %start, %ray)
                     Next we'll add a function to spawn a new bot and equip it with a weapon and some ammo.
                 </p>
 
-<pre>
-function serverCmdspawnTeammate(%client, %source)
+<pre>function serverCmdspawnTeammate(%client, %source)
+{
+    spawnTeammate(%client, %source);
+}
+
+function spawnTeammate(%client, %source)
 {
     // Create a new, generic AI Player
     // Position will be at the camera's location
@@ -1371,7 +1736,7 @@ function serverCmdspawnTeammate(%client, %source)
     %y = getRandom(4, 10);
     %vec = %x SPC %y SPC "0";
     %dest = VectorAdd(%newBot.getPosition(), %vec);
-    %newBot.setMoveDestination(%dest);
+    %newBot.setPathDestination(%dest);
     
     addTeam1Bot(%newBot);
 }</pre>
@@ -1384,19 +1749,19 @@ function serverCmdspawnTeammate(%client, %source)
 function addTeam1Bot(%bot)
 {
     // We'll create a SimSet to track our Team1 bots if it hasn't been created already
-    if (!isObject(Team1List))
+    if (!isObject(%client.TeamList))
     {
-        new SimSet(Team1List);
-        MissionCleanup.add(Team1List);
+        %client.TeamList = new SimSet();
+        MissionCleanup.add(%client.TeamList);
     }
     
     // And then add our bot to the Team1 list.
-    Team1List.add(%bot);
+    %client.TeamList.add(%bot);
 }</pre>
 
                 <p>
                     At this point we're ready to spawn units from our structures.&nbsp;&nbsp; If you 
-                    test the game now, you should be able to create a new burrow and it should spawn 
+                    test the game now, you should be able to create a new station and it should spawn 
                     bots when you click on it.</p>
                   <p><br />
                       <img alt="" src="images/RTS_SpawnBotsFromBuilding.png" /></p>
@@ -1420,13 +1785,13 @@ function serverCmdtoggleMultiSelect(%client, %flag)
 
 function multiSelect(%target)
 {
-    if (!isObject(Team1List))
+    if (!isObject(%client.TeamList))
     {
-        new SimSet(Team1List);
-        MissionCleanup.add(Team1List);
+        %client.TeamList = new SimSet();
+        MissionCleanup.add(%client.TeamList);
     }
     
-    %leader = findTeam1Leader();
+    %leader = findTeamLeader(%client);
     if (isObject(%leader))
     {
         %target.destOffset = VectorSub(%leader.getPosition(), %target.getPosition());
@@ -1442,15 +1807,15 @@ function multiSelect(%target)
 
 function findTeam1Leader()
 {
-    if (!isObject(Team1List))
+    if (!isObject(%client.TeamList))
     {
-        new SimSet(Team1List);
-        MissionCleanup.add(Team1List);
+        %client.TeamList = new SimSet();
+        MissionCleanup.add(%client.TeamList);
     }
 
-    for (%c = 0; %c < Team1List.getCount(); %c++)
+    for (%c = 0; %c < %client.TeamList.getCount(); %c++)
     {
-        %unit = Team1List.getObject(%c);
+        %unit = %client.TeamList.getObject(%c);
         if (%unit.isLeader)
             return %unit;
     }
@@ -1460,15 +1825,15 @@ function findTeam1Leader()
 
 function cleanupSelectGroup()
 {
-    if (!isObject(Team1List))
+    if (!isObject(%client.TeamList))
     {
-        new SimSet(Team1List);
-        MissionCleanup.add(Team1List);
+        %client.TeamList = new SimSet();
+        MissionCleanup.add(%client.TeamList);
     }
     
-    for (%c = 0; %c < Team1List.getCount(); %c++)
+    for (%c = 0; %c < %client.TeamList.getCount(); %c++)
     {
-        %temp = Team1List.getObject(%c);
+        %temp = %client.TeamList.getObject(%c);
         %temp.isSelected = false;
         %temp.isLeader = false;
         %temp.destOffset = "0 0 0";
@@ -1481,13 +1846,13 @@ function cleanupSelectGroup()
                     the system know when we want to start adding units to our selection list.&nbsp; 
                     The <strong>multiSelect()</strong> function actually handles setting up&nbsp; 
                     the list by setting a member variable on the bot to indicate that it has been 
-                    selected.&nbsp; Additionally, if there is no other bot in the Team1List SimSet 
+                    selected.&nbsp; Additionally, if there is no other bot in the %client.TeamList SimSet 
                     that is selected this bot is designated the &quot;leader.&quot;&nbsp; All of the 
                     subsequently selected bots will calculate offset destination targets based on 
                     this bot&#39;s destination.&nbsp; The <strong>findTeam1Leader()</strong> 
-                    utility function just searches the Team1List for a designated &quot;leader&quot; unit.&nbsp; 
+                    utility function just searches the %client.TeamList for a designated &quot;leader&quot; unit.&nbsp; 
                     Finally, the <strong>cleanupSelectGroup()</strong> utility function just clears the 
-                    selection variables from all of Team1List&#39;s members.
+                    selection variables from all of %client.TeamList&#39;s members.
                 </p>
                 <p><br />
                     Next, modify <strong>PlayGui::onRightMouseDown()</strong> in <strong>scripts/gui</strong> so that it 
@@ -1498,45 +1863,13 @@ function cleanupSelectGroup()
 function PlayGui::onRightMouseDown(%this, %pos, %start, %ray)
 {   
     commandToServer('movePlayer', %pos, %start, %ray);
-    
-    %ray = VectorScale(%ray, 1000);
-    %end = VectorAdd(%start, %ray);
-
-    // only care about terrain objects
-    %searchMasks = $TypeMasks::TerrainObjectType | $TypeMasks::StaticTSObjectType | 
-    $TypeMasks::InteriorObjectType | $TypeMasks::ShapeBaseObjectType
-    | $TypeMasks::StaticObjectType;
-
-    // search!
-    %scanTarg = ContainerRayCast( %start, %end, %searchMasks);
-
-    if (%scanTarg)
-    {
-        %obj = getWord(%scanTarg, 0);
-
-        // Get the X,Y,Z position of where we clicked
-        %pos = getWords(%scanTarg, 1, 3);
-
-        // Get the normal of the location we clicked on
-        %norm = getWords(%scanTarg, 4, 6);
-
-        // Create a new decal using the decal manager
-        // arguments are (Position, Normal, Rotation, Scale, Datablock, Permanent)
-        // We are now just letting the decals clean up after themselves.
-        decalManagerAddDecal(%pos, %norm, 0, 1, "gg_decal", false);
-    }
 }</pre>
-
-            <p>
-                This change eliminates the need to track which bot is the &quot;leader&quot; and which bot 
-                which decal belongs to - it simply lets the decal expire.
-            </p>
-            <p><br />
-                In order to move our group of selected units together we'll have to update our <strong>serverCmdmovePlayer()</strong> function to 
-                tell all of our units where to go.
-            </p>
+<p><br />
+    In order to move our group of selected units together we'll have to update our <strong>movePlayer()</strong> function in <strong>scripts/server/commands.cs</strong> to 
+    tell all of our units where to go.
+</p>
 <pre>
-function serverCmdmovePlayer(%client, %pos, %start, %ray)
+function movePlayer(%client, %pos, %start, %ray)
 {
     //echo(" -- " @ %client @ ":" @ %client.player @ " moving");
 
@@ -1563,33 +1896,40 @@ function serverCmdmovePlayer(%client, %pos, %start, %ray)
 
         // Set the destination for the AI player to
         // make him move
-        if (isObject(Team1List))
+        if (isObject(%client.TeamList))
         {
             %c = 0;
-            %end = Team1List.getCount();
-            %unit = Team1List.getObject(0);
+            %end = %client.TeamList.getCount();
+            %unit = %client.TeamList.getObject(0);
+            if(%ai $= "")
+                %ai = %unit;
             while (isObject(%unit))
             {
                 if (%unit.isSelected)
                 {
                     %dest = VectorSub(%pos, %unit.destOffset);
-                    %unit.setMoveDestination( %dest );
+                    %unit.setPathDestination( %dest );
                 }
                 %c++;
                 if (%c < %end)
-                    %unit = Team1List.getObject(%c);
+                    %unit = %client.TeamList.getObject(%c);
                 else
                     %unit = 0;
             }
         }
         else
-            %ai.setMoveDestination( %pos );
+        {
+            if (%ai !$= "")
+                %ai.setPathDestination( %pos );
+        }
+        
+        commandToClient(%client, 'setDestDecal', %ai, %pos, %norm);
     }
 }
 </pre>
             <p><br />
                 
-                Now we have to modify <strong>scripts/player/default.bind.cs</strong> to add some new functions 
+                Now we have to modify <strong>scripts/client/default.bind.cs</strong> to add some new functions 
                 and a new bind right after our bind to spawn enemy targets.
             </p>
 
@@ -1627,30 +1967,10 @@ moveMap.bindCmd( keyboard, "ctrl x", "addSelect();", "dropSelect();" );
                       <img alt="" src="images/RTS_MultiSelectMoving.png" /></p>
                   <p><br />
                       If you use the &#39;b&#39; key to spawn a target and then left-click on it while 
-                      multiple units are selected they will all attack the target.&nbsp; You will need 
-                      to left-click the terrain to stop them from attacking.&nbsp; Left-clicking the 
+                      multiple units are selected they will all attack the target.&nbsp; The units should stop attacking when the target is dead.&nbsp; Left-clicking the 
                       terrain will also clear your current selection group.</p>
                   <p><br />
                       <img alt="" src="images/RTS_MultiSelectAttacking.png" /></p>
-                  Now open <strong>scripts/server/player.cs</strong>, find <strong>Armor::onDisabled()</strong> and 
-                      add the following code after the call to <strong>%obj.playDeathAnimation()</strong>:</p>
-
-<pre>
-   for (%i = 0; %i < Team1List.getCount(); %i++)
-   {
-       %unit = Team1List.getObject(%i);
-       if (!isObject(%obj))
-       {
-           %unit.target = "";
-           %unit.setAimObject(0);
-           %unit.schedule(150, "setImageTrigger", 0, 0);
-       }
-   }
-</pre>
-
-            <p>This will search our Team1List and stop any units who are currently attacking %obj (the dying object) to stop when
-            %obj dies.</p>
-
             <p><br />
                 That about wraps it up.  You should now have a pretty functional RTS prototype with unit control, unit spawning and some 
                 other basic features that are typical of the genre.
@@ -1675,13 +1995,13 @@ moveMap.bindCmd( keyboard, "ctrl x", "addSelect();", "dropSelect();" );
                   <li>Make the targets move around and attack the player or the players units</li>
                   <li>Add key bindings to change camera modes on the fly</li>
                 </ul><br />
-                <p>You can download the completed scripts by <a href="rts_prototype_scripts.zip" class="downloads">CLICKING HERE</a>.<br />
-                <br />If you wish to download the scripts and assets in a single file, <a href="rts_prototype.zip" class="downloads">CLICK HERE</a>.</p>
-                  <p><br />A special thanks to Steve Acaster and his 
+                  <p><br />A special thanks to Michael Perry for the original RTS Prototype article and Steve Acaster for his 
                       <a href="http://www.garagegames.com/community/resources/view/20995" 
                           class="external">Tactics-Action Hybrid Game Tutorial 
-                      series</a> for saving me considerable time fiddling with the camera.</p>
-                
+                      series</a>, which saved me considerable time fiddling with the camera.</p>
+                      
+<p><br />
+<a href="RTSPrototype2.html" target="mainFrame">Continue in part 2.</a></p>                
                 </td>
             </tr>
           </tbody>
@@ -1695,7 +2015,11 @@ moveMap.bindCmd( keyboard, "ctrl x", "addSelect();", "dropSelect();" );
   
   </div>
 
-</td></tr></table><div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div></body>
+</td></tr>
+
+</table><div class="footer">   <a href="../../../content_welcome.html" target="">Home</a>   <a href="#">Back to Top</a></div>
+
+</body>
 <script type="text/javascript">
 
 var links = document.getElementsByTagName('a');

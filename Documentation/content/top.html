@@ -71,28 +71,12 @@ function alertkey(e)
 <link href="include/topStyles.css" rel="stylesheet" type="text/css" />
 </head>
 <body onload = "onPageLoad()">
-<div id="searchBox" style="display:none;">
-	<!-- Search Box HTML Code Begin: -->
-	<script language="javascript">function killerrors(){return true;}window.onerror = killerrors;</script>
-	<script language="javascript">function saveselection() {if (document.form_search.sw) document.cookie='sw='+escape(document.form_search.sw.value);};function readcookie(sname){var c=document.cookie;if (c.length<0) return false;var b=c.indexOf(sname+'=');if (b==-1) return false;var d=c.indexOf(';',b);if (d==-1) d=c.length;return unescape(c.substring(b+sname.length+1,d));};function readselection() {if (document.form_search.sw) {c=readcookie('sw');if (c) document.form_search.sw.value=c;};};</script>
-<script language="JavaScript">function OnSearchSubmit(){var b_return=true;if (document.form_search.sw){for(var i=0;i<document.form_search.sw.value.length;i++){if (document.form_search.sw.value.charAt(i)!=" ")	{lh="searchresult.html?sw="+encodeURIComponent(document.form_search.sw.value);b_return=false;break;}}}if (b_return) return;saveselection();searchwin=window.open(lh, "mainFrame");searchwin.focus();}</script>
-<form name=form_search action="JavaScript:OnSearchSubmit()">
-  <input type="text" name="sw" size="20">
-  <input type="submit" value="Search">
-	</form>
-	<script language="javascript">readselection();</script>
-<script language="javascript" src="searchdb.js"></script>
-<script language="javascript" src="searchindex.js"></script>
-	<!-- Search Box HTML Code End. -->
 </div>
 <!-- Mockup Menubar Code Start. -->
 <a target="_parent" href="http://www.GarageGames.com/community"> <img align="right" vspace="40" src="images/community_n.png" name="Community"
       onmouseover = "document.com.src = 'images/community_h.png';" 
       onmouseout = "document.com.src = 'images/community_n.png';" /></a>
 <!-- Mockup Menubar Code End. -->
-<script>
-   document.getElementById('searchBox').style.display = "block";
-  </script>
 </body>
 </html>
 <script>srcDocDir = "Common";</script>

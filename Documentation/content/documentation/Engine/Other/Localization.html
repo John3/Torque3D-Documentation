@@ -1,0 +1,746 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 107;
+   parent.leftFrame.expandToItem('tree2', 'doc107');
+   var element = parent.leftFrame.document.getElementById('doc107');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+<link rel="stylesheet" type="text/css" href="../../../include/container.css" />
+<link rel="stylesheet" type="text/css" href="../../../include/content.css" />
+<title>Torque3D - RTS AI Tutorial</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    </head>
+<BODY id = "BODYID" onLoad = "initComponent()"  bgcolor="#FFFFFF" class="mediawiki ltr ns-0 ns-subject page-Torque3D_Scripting_Advanced_RTSAITutorial skin-monobook">
+<table width="700" cellspacing="0" cellpadding="0" border="0" style="text-align: justify;" xmlns="">
+<tr>
+<td width="700">
+
+<div id="globalWrapper" xmlns="http://www.w3.org/1999/xhtml">
+  <div id="column-content">
+    <a name="top" id="top"></a>
+      
+        <table border="0" cellpadding="15" cellspacing="0" width="700">
+          <tbody>
+            <tr>
+              <td width="700"><table id="toc" summary="Contents">
+                  <tbody>
+                    <tr>
+                      <td><div id="toctitle">
+                          <h2>Contents</h2>
+                        <ul>
+                          <li class="toclevel-1"><a href="#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a></li>
+                          <li class="toclevel-1"><a href="#EngineSide"><span class="tocnumber">2</span> <span class="toctext">Engine-side Changes</span></a></li>
+                          <li class="toclevel-1"><a href="#ScriptSide"><span class="tocnumber">3</span> <span class="toctext">Script-side Changes</span></a></li>
+                          <li class="toclevel-1"><a href="#Usage"><span class="tocnumber">4</span> <span class="toctext">An Example of Use</span></a></li>
+                          <li class="toclevel-1"><a href="#Close"><span class="tocnumber">5</span> <span class="toctext">Conclusion</span></a></li>
+                        </ul></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <h1> <span class="mw-headline">Localization and Internationalization</span></h1>
+                <a name="Introduction" id="Introduction"></a>
+                <h2> <span class="mw-headline">Introduction</span></h2>
+                <p>Torque 3D's localization and internationalization (l10n and i18n) support is slightly broken.  In this article we'll show you how to fix it up a little.  It's actually remarkably simple once you see it laid out.</p>
+                <p>If you are not familiar with compiling C/C++ programs, go get familiar with it <strong>before</strong> attempting <strong>any</strong> engine-side changes.  This is a simple code change, but if you don't know how to use a compiler then you will spend countless frustrated hours on this.</p>
+                <a name="EngineSide" id="EngineSide"></a>
+                <h2> <span class="mw-headline">Engine-side Changes</span></h2>
+                <p></p>
+<p><br />First, open <strong>source/i18n/lang.h</strong>. After this line: <strong>#include "core/util/tVector.h"</strong>
+just near the start, add:</p>
+
+<pre>//lang_ localization
+#include "core/fileObject.h"
+#include "core/util/str.h"
+#include "core/strings/unicode.h"</pre>
+<br/>
+<p><img src="images/I18N_AddHeaders.png" width="453" height="261" alt=""/></p>
+<p><br />Next, in <strong>source/i18n/lang.cpp</strong>, replace the whole method <strong>bool LangFile::load(Stream *s) {...}</strong> with:</p>
+
+<pre>bool LangFile::load(Stream *s)
+{
+	freeTable();
+	
+	while(s->getStatus() == Stream::Ok)
+	{
+		char buf[2048];
+		s->readLongString(2048,buf);
+		if (s->getStatus() == Stream::Ok)
+			addString((const UTF8*)buf);
+	}
+	return true;
+}</pre>
+
+<p><br />Then replace the <strong>bool LangFile::save(Stream *s) {...}</strong> method with:</p>
+
+<pre>bool LangFile::save(Stream *s)
+{
+	if(!isLoaded())
+		return false;
+	
+	U32 i;
+	for(i = 0;i < mStringTable.size();i++)
+	{
+		s->writeLongString(2048, (char*)mStringTable[i]); //irei1as_ lang
+	}
+	return true;
+}</pre>
+
+<p><br />Finally, at the end of <strong>source/i18n/lang.cpp</strong> add:</p>
+
+
+<pre>//lang_ localization
+bool compiledFileNeedsUpdate(UTF8* filename)
+{
+	Torque::Path filePath = Torque::Path(filename);
+	Torque::FS::FileNodeRef sourceFile = Torque::FS::GetFileNode(filePath);
+	Torque::Path compiledPath = Torque::Path(filePath);
+	compiledPath.setExtension("lso");
+	Torque::FS::FileNodeRef compiledFile = Torque::FS::GetFileNode(compiledPath);
+
+	Torque::Time sourceModifiedTime, compiledModifiedTime;
+
+	if (sourceFile != NULL)
+		sourceModifiedTime = sourceFile->getModifiedTime();
+
+	if (compiledFile != NULL)
+		compiledModifiedTime = compiledFile->getModifiedTime();
+
+	if (sourceModifiedTime > compiledModifiedTime)
+		return true;
+	return false;
+}
+
+ConsoleFunction( CompileLanguage, void, 2, 3, "(string inputFile, [bool createMap]) Compiles a LSO language file."
+                                              " if createIndex is true, will also create languageMap.cs with"
+                                              " the global variables for each string index."
+                                              " The input file must follow this example layout:"
+                                              " TXT_HELLO_WORLD = Hello world in english!" )
+{
+	UTF8 scriptFilenameBuffer[1024];
+	Con::expandScriptFilename((char*)scriptFilenameBuffer, sizeof(scriptFilenameBuffer), argv[1]);
+
+	if (!Torque::FS::IsFile(scriptFilenameBuffer))
+	{
+		Con::errorf("CompileLanguage - file %s not found", scriptFilenameBuffer);
+		return;
+	}
+
+	FileObject file;
+	if (!file.readMemory(scriptFilenameBuffer))
+	{
+		Con::errorf("CompileLanguage - couldn't read file %s", scriptFilenameBuffer);
+		return;
+	}
+
+	if (compiledFileNeedsUpdate(scriptFilenameBuffer))
+	{
+		bool createMap = argc > 2 ? dAtob(argv[2]) : false;
+		FileStream *mapStream = NULL;
+		if (createMap)
+		{
+			Torque::Path mapPath = scriptFilenameBuffer;
+			mapPath.setFileName("languageMap");
+			mapPath.setExtension("cs");
+			if ((mapStream = FileStream::createAndOpen(mapPath, Torque::FS::File::Write)) == NULL)
+				Con::errorf("CompileLanguage - failed creating languageMap.cs");
+		}
+
+		LangFile langFile;
+		const U8* inLine = NULL;
+		const char* separatorStr = " = ";
+		S32 stringId = 0;
+		while ((inLine = file.readLine())[0] != 0)
+		{
+			char* line;
+			chompUTF8BOM((const char *)inLine, &line);
+			char* div = dStrstr(line, separatorStr);
+			if (div == NULL)
+			{
+				Con::errorf("Separator %s not found in line: %s", separatorStr, line);
+				Con::errorf("Could not determine string name ID");
+				continue;
+			}
+			*div = 0;
+			char* text = div + dStrlen(separatorStr);
+
+			langFile.addString((const UTF8*)text);
+
+			if (mapStream)
+			{
+				String mapLine = String::ToString("$%s = %i;", line, stringId);
+				mapStream->writeLine((const U8*)mapLine.c_str());
+				String commentLine = String::ToString("// %s", text);
+				mapStream->writeLine((const U8*)commentLine.c_str());
+			}
+
+			stringId++;
+		}
+
+		Torque::Path lsoPath = scriptFilenameBuffer;
+		lsoPath.setExtension("lso");
+		langFile.save(lsoPath.getFullPath());
+
+		if (mapStream)
+			delete mapStream;
+	}
+}
+//end of the C++ changes for localization
+</pre>
+                <a name="ScriptSide" id="ScriptSide"></a>
+                <h2> <span class="mw-headline">Script-side Changes</span></h2>
+                <p></p>
+<p><br />Now the Torquescript changes.  We're going to start by adding our language map files.</p>
+<p>Create a "english.txt" in <strong>game/scripts</strong> and make its text:</p>
+<p><img src="images/I18N_EnglishMap.png" width="527" height="184" alt=""/></p>
+<pre>txt_hello = Hello world
+txt_language = This is the English language
+txt_goodbye_going = Goodbye
+txt_goodbye_staying = Goodbye
+txt_last = This is the last string</pre>
+
+<p><br />You may want it to be UTF-8 without BOM</p>
+
+<p><br />Add also a "korean.txt" with its contents except the "txt_..." translated like:</p>
+<p><img src="images/I18N_KoreanMap.png" width="395" height="159" alt=""/></p>
+<pre>txt_hello = 안녕하새요
+txt_language = 이곳은 한국어 이예요
+txt_goodbye_going = 안녕히 계세요
+txt_goodbye_staying = 안녕히 가세요
+txt_last = 마지막이다</pre>
+<p><br />At the end of <strong>game/scripts/main.cs</strong> add:</p>
+<pre>new LangTable(mainLangTable); //lang_ localization
+$I18N::default = mainLangTable.getId();
+
+function updateLanguages()
+{
+    compileLanguage("./english.txt", 1); //that 1 exists to create languageMap.cs
+    compileLanguage("./korean.txt", 0);
+
+    mainLangTable.addLanguage("./english.lso", "English"); //language #0
+    mainLangTable.addLanguage("./korean.lso", "Korean"); //language #1
+
+    mainLangTable.setCurrentLanguage(0);
+    exec("./languageMap.cs"); //this file is created by a previous compileLanguage
+}
+// This should only actually happen when the .txt is newer than the .lso
+// but we can go ahead and call it ever time.
+updateLanguages();
+
+function selectLanguage(%language) //use here the #n as it's the order of inclusion
+{
+	mainLangTable.setCurrentLanguage(%language);
+	Canvas.setContent(Canvas.getContent());
+}</pre>
+
+
+<p><br />Finally, in game/main.cs inside <strong>function createCanvas(%windowTitle)</strong>
+before <strong>return true;</strong> add:</p>
+
+<pre>   Canvas.langTableMod = "default";</pre>
+                <a name="Usage" id="Usage"></a>
+                <h2> <span class="mw-headline">An Example of Use</span></h2>
+<p>The order of addition in <strong>game/scripts/main.cs</strong> sets the index of the language.  In our case, English is 0 and Korean is 1.</p>
+<p>Use <strong>switchLanguage(%languageIndex)</strong>, where <strong>%languageIndex</strong> is the assigned language index, to select the current language.</p>
+
+<p>In GUI controls, just use the text_id as assigned in the language map file (for example, <em>txt_hello</em> for the current language's "hello" text).</p>
+<p>In script, call <strong>mainlangtable.getstring($txt_hello)</strong>.  It will return the localized text for the requested key.</p>
+<p>In C++, get the LangTable and call <strong>getString()</strong> like the GUI does. It may be convoluted to program.  Probably just using something similar to: <strong>UTF8 * GuiControl::getGUIString(S32 id)</strong>.</p>
+<br/>
+<p>To illustrate how to use this, we'll create a GUI to display our text, along with some buttons to make it happen.</p>
+<br/>
+<p>First, the GUI file.  Place it in <strong>scripts/gui/LangTest.gui</strong>:</p>
+<pre>//--- OBJECT WRITE BEGIN ---
+%guiContent = new GuiWindowCtrl(LangTest) {
+   text = "New Window";
+   resizeWidth = "1";
+   resizeHeight = "1";
+   canMove = "1";
+   canClose = "1";
+   canMinimize = "1";
+   canMaximize = "1";
+   canCollapse = "0";
+   edgeSnap = "1";
+   margin = "0 0 0 0";
+   padding = "0 0 0 0";
+   anchorTop = "1";
+   anchorBottom = "0";
+   anchorLeft = "1";
+   anchorRight = "0";
+   position = "0 0";
+   extent = "1024 768";
+   minExtent = "8 2";
+   horizSizing = "right";
+   vertSizing = "bottom";
+   profile = "GuiWindowProfile";
+   visible = "1";
+   active = "1";
+   tooltipProfile = "GuiToolTipProfile";
+   hovertime = "1000";
+   isContainer = "1";
+   canSave = "1";
+   canSaveDynamicFields = "1";
+
+   new GuiTextCtrl() {
+      text = "Last";
+      maxLength = "1024";
+      margin = "0 0 0 0";
+      padding = "0 0 0 0";
+      anchorTop = "1";
+      anchorBottom = "0";
+      anchorLeft = "1";
+      anchorRight = "0";
+      position = "17 84";
+      extent = "64 18";
+      minExtent = "8 2";
+      horizSizing = "right";
+      vertSizing = "bottom";
+      profile = "GuiTextProfile";
+      visible = "1";
+      active = "1";
+      tooltipProfile = "GuiToolTipProfile";
+      hovertime = "1000";
+      isContainer = "1";
+      canSave = "1";
+      canSaveDynamicFields = "0";
+   };
+   new GuiTextCtrl(tbxLast) {
+      text = "...";
+      maxLength = "1024";
+      margin = "0 0 0 0";
+      padding = "0 0 0 0";
+      anchorTop = "1";
+      anchorBottom = "0";
+      anchorLeft = "1";
+      anchorRight = "0";
+      position = "124 83";
+      extent = "300 20";
+      minExtent = "8 2";
+      horizSizing = "right";
+      vertSizing = "bottom";
+      profile = "GuiTextProfile";
+      visible = "1";
+      active = "1";
+      tooltipProfile = "GuiToolTipProfile";
+      hovertime = "1000";
+      isContainer = "1";
+      canSave = "1";
+      canSaveDynamicFields = "0";
+   };
+   new GuiTextCtrl() {
+      text = "Hello World";
+      maxLength = "1024";
+      margin = "0 0 0 0";
+      padding = "0 0 0 0";
+      anchorTop = "1";
+      anchorBottom = "0";
+      anchorLeft = "1";
+      anchorRight = "0";
+      position = "17 40";
+      extent = "64 18";
+      minExtent = "8 2";
+      horizSizing = "right";
+      vertSizing = "bottom";
+      profile = "GuiTextProfile";
+      visible = "1";
+      active = "1";
+      tooltipProfile = "GuiToolTipProfile";
+      hovertime = "1000";
+      isContainer = "1";
+      canSave = "1";
+      canSaveDynamicFields = "0";
+   };
+   new GuiTextCtrl(tbxHelloWorld) {
+      text = "...";
+      maxLength = "1024";
+      margin = "0 0 0 0";
+      padding = "0 0 0 0";
+      anchorTop = "1";
+      anchorBottom = "0";
+      anchorLeft = "1";
+      anchorRight = "0";
+      position = "124 39";
+      extent = "300 20";
+      minExtent = "8 2";
+      horizSizing = "right";
+      vertSizing = "bottom";
+      profile = "GuiTextProfile";
+      visible = "1";
+      active = "1";
+      tooltipProfile = "GuiToolTipProfile";
+      hovertime = "1000";
+      isContainer = "1";
+      canSave = "1";
+      canSaveDynamicFields = "0";
+   };
+   new GuiTextCtrl() {
+      text = "Language";
+      maxLength = "1024";
+      margin = "0 0 0 0";
+      padding = "0 0 0 0";
+      anchorTop = "1";
+      anchorBottom = "0";
+      anchorLeft = "1";
+      anchorRight = "0";
+      position = "17 62";
+      extent = "64 18";
+      minExtent = "8 2";
+      horizSizing = "right";
+      vertSizing = "bottom";
+      profile = "GuiTextProfile";
+      visible = "1";
+      active = "1";
+      tooltipProfile = "GuiToolTipProfile";
+      hovertime = "1000";
+      isContainer = "1";
+      canSave = "1";
+      canSaveDynamicFields = "0";
+   };
+   new GuiTextCtrl(tbxLanguage) {
+      text = "...";
+      maxLength = "1024";
+      margin = "0 0 0 0";
+      padding = "0 0 0 0";
+      anchorTop = "1";
+      anchorBottom = "0";
+      anchorLeft = "1";
+      anchorRight = "0";
+      position = "124 61";
+      extent = "300 20";
+      minExtent = "8 2";
+      horizSizing = "right";
+      vertSizing = "bottom";
+      profile = "GuiTextProfile";
+      visible = "1";
+      active = "1";
+      tooltipProfile = "GuiToolTipProfile";
+      hovertime = "1000";
+      isContainer = "1";
+      canSave = "1";
+      canSaveDynamicFields = "0";
+   };
+   new GuiTextCtrl(tbxGoodbye1) {
+      text = "...";
+      maxLength = "1024";
+      margin = "0 0 0 0";
+      padding = "0 0 0 0";
+      anchorTop = "1";
+      anchorBottom = "0";
+      anchorLeft = "1";
+      anchorRight = "0";
+      position = "124 105";
+      extent = "300 20";
+      minExtent = "8 2";
+      horizSizing = "right";
+      vertSizing = "bottom";
+      profile = "GuiTextProfile";
+      visible = "1";
+      active = "1";
+      tooltipProfile = "GuiToolTipProfile";
+      hovertime = "1000";
+      isContainer = "1";
+      canSave = "1";
+      canSaveDynamicFields = "0";
+   };
+   new GuiTextCtrl() {
+      text = "Goodbye 1";
+      maxLength = "1024";
+      margin = "0 0 0 0";
+      padding = "0 0 0 0";
+      anchorTop = "1";
+      anchorBottom = "0";
+      anchorLeft = "1";
+      anchorRight = "0";
+      position = "17 106";
+      extent = "64 18";
+      minExtent = "8 2";
+      horizSizing = "right";
+      vertSizing = "bottom";
+      profile = "GuiTextProfile";
+      visible = "1";
+      active = "1";
+      tooltipProfile = "GuiToolTipProfile";
+      hovertime = "1000";
+      isContainer = "1";
+      canSave = "1";
+      canSaveDynamicFields = "0";
+   };
+   new GuiTextCtrl(tbxGoodbye2) {
+      text = "...";
+      maxLength = "1024";
+      margin = "0 0 0 0";
+      padding = "0 0 0 0";
+      anchorTop = "1";
+      anchorBottom = "0";
+      anchorLeft = "1";
+      anchorRight = "0";
+      position = "124 127";
+      extent = "300 20";
+      minExtent = "8 2";
+      horizSizing = "right";
+      vertSizing = "bottom";
+      profile = "GuiTextProfile";
+      visible = "1";
+      active = "1";
+      tooltipProfile = "GuiToolTipProfile";
+      hovertime = "1000";
+      isContainer = "1";
+      canSave = "1";
+      canSaveDynamicFields = "0";
+   };
+   new GuiTextCtrl() {
+      text = "Goodbye 2";
+      maxLength = "1024";
+      margin = "0 0 0 0";
+      padding = "0 0 0 0";
+      anchorTop = "1";
+      anchorBottom = "0";
+      anchorLeft = "1";
+      anchorRight = "0";
+      position = "17 128";
+      extent = "64 18";
+      minExtent = "8 2";
+      horizSizing = "right";
+      vertSizing = "bottom";
+      profile = "GuiTextProfile";
+      visible = "1";
+      active = "1";
+      tooltipProfile = "GuiToolTipProfile";
+      hovertime = "1000";
+      isContainer = "1";
+      canSave = "1";
+      canSaveDynamicFields = "0";
+   };
+   new GuiButtonCtrl(btnEnglish) {
+      text = "English";
+      groupNum = "-1";
+      buttonType = "PushButton";
+      useMouseEvents = "0";
+      position = "12 161";
+      extent = "140 30";
+      minExtent = "8 2";
+      horizSizing = "right";
+      vertSizing = "bottom";
+      profile = "GuiButtonProfile";
+      visible = "1";
+      active = "1";
+      tooltipProfile = "GuiToolTipProfile";
+      hovertime = "1000";
+      isContainer = "0";
+      canSave = "1";
+      canSaveDynamicFields = "0";
+   };
+   new GuiButtonCtrl(btnKorean) {
+      text = "Korean";
+      groupNum = "-1";
+      buttonType = "PushButton";
+      useMouseEvents = "0";
+      position = "168 161";
+      extent = "140 30";
+      minExtent = "8 2";
+      horizSizing = "right";
+      vertSizing = "bottom";
+      profile = "GuiButtonProfile";
+      visible = "1";
+      active = "1";
+      tooltipProfile = "GuiToolTipProfile";
+      hovertime = "1000";
+      isContainer = "0";
+      canSave = "1";
+      canSaveDynamicFields = "0";
+   };
+   new GuiRadioCtrl(rbtnBatang) {
+      text = "Batang";
+      groupNum = "4";
+      buttonType = "RadioButton";
+      useMouseEvents = "0";
+      position = "169 198";
+      extent = "140 13";
+      minExtent = "8 2";
+      horizSizing = "right";
+      vertSizing = "bottom";
+      profile = "GuiRadioProfile";
+      visible = "1";
+      active = "1";
+      tooltipProfile = "GuiToolTipProfile";
+      hovertime = "1000";
+      isContainer = "0";
+      canSave = "1";
+      canSaveDynamicFields = "0";
+   };
+   new GuiRadioCtrl(rbtnGungsuh) {
+      text = "Gungsuh";
+      groupNum = "4";
+      buttonType = "RadioButton";
+      useMouseEvents = "0";
+      position = "169 217";
+      extent = "140 13";
+      minExtent = "8 2";
+      horizSizing = "right";
+      vertSizing = "bottom";
+      profile = "GuiRadioProfile";
+      visible = "1";
+      active = "1";
+      tooltipProfile = "GuiToolTipProfile";
+      hovertime = "1000";
+      isContainer = "0";
+      canSave = "1";
+      canSaveDynamicFields = "0";
+   };
+   new GuiRadioCtrl(rbtnDotum) {
+      text = "Dotum";
+      groupNum = "4";
+      buttonType = "RadioButton";
+      useMouseEvents = "0";
+      position = "169 236";
+      extent = "140 13";
+      minExtent = "8 2";
+      horizSizing = "right";
+      vertSizing = "bottom";
+      profile = "GuiRadioProfile";
+      visible = "1";
+      active = "1";
+      tooltipProfile = "GuiToolTipProfile";
+      hovertime = "1000";
+      isContainer = "0";
+      canSave = "1";
+      canSaveDynamicFields = "0";
+   };
+};
+//--- OBJECT WRITE END ---
+</pre>
+<br/>
+<p>Ensure that you have the Korean language pack installed so that the standard Korean fonts are available.  Now, in <strong>art/gui/customProfiles.cs</strong> add our Korean font profiles:</p>
+<pre>if( !isObject( GuiKoreanTextProfile ) )
+new GuiControlProfile( GuiKoreanTextProfile : GuiTextProfile )
+{
+    fontType = "BatangChe";
+};
+
+if( !isObject( GuiKoreanTextProfileGungsuh ) )
+new GuiControlProfile( GuiKoreanTextProfileGungsuh : GuiTextProfile )
+{
+    fontType = "GungsuhChe";
+};
+if( !isObject( GuiKoreanTextProfileDotum ) )
+new GuiControlProfile( GuiKoreanTextProfileDotum : GuiTextProfile )
+{
+    fontType = "DotumChe";
+};</pre>
+<br/>
+<p>Next, add <strong>scripts/gui/LangTest.cs</strong> and copy in the following script:</p>
+<pre>exec("./LangTest.gui");
+
+function btnEnglish::onClick(%this)
+{
+    selectLanguage(0);
+    $SelectedLang = 0;
+    tbxHelloWorld.profile = GuiTextProfile;
+    tbxHelloWorld.setText(mainlangtable.getstring($txt_hello));
+    tbxLanguage.profile = GuiTextProfile;
+    tbxLanguage.setText(mainlangtable.getstring($txt_language));
+    tbxGoodbye1.profile = GuiTextProfile;
+    tbxGoodbye1.setText(mainlangtable.getstring($txt_goodbye_staying));
+    tbxGoodbye2.profile = GuiTextProfile;
+    tbxGoodbye2.setText(mainlangtable.getstring($txt_goodbye_going));
+    tbxLast.profile = GuiTextProfile;
+    tbxLast.setText(mainlangtable.getstring($txt_last));
+}
+
+function btnKorean::onClick(%this)
+{
+    selectLanguage(1);
+    $SelectedLang = 1;
+    tbxHelloWorld.profile = GuiKoreanTextProfile;
+    tbxHelloWorld.setText(mainlangtable.getstring($txt_hello));
+    tbxLanguage.profile = GuiKoreanTextProfile;
+    tbxLanguage.setText(mainlangtable.getstring($txt_language));
+    tbxGoodbye1.profile = GuiKoreanTextProfile;
+    tbxGoodbye1.setText(mainlangtable.getstring($txt_goodbye_staying));
+    tbxGoodbye2.profile = GuiKoreanTextProfile;
+    tbxGoodbye2.setText(mainlangtable.getstring($txt_goodbye_going));
+    tbxLast.profile = GuiKoreanTextProfile;
+    tbxLast.setText(mainlangtable.getstring($txt_last));
+}
+
+function rbtnBatang::onClick(%this)
+{
+    if($SelectedLang == 1)
+    {
+        tbxHelloWorld.profile = GuiKoreanTextProfile;
+        tbxLanguage.profile = GuiKoreanTextProfile;
+        tbxGoodbye1.profile = GuiKoreanTextProfile;
+        tbxGoodbye2.profile = GuiKoreanTextProfile;
+        tbxLast.profile = GuiKoreanTextProfile;
+    }
+}
+
+function rbtnGungsuh::onClick(%this)
+{
+    if($SelectedLang == 1)
+    {
+        tbxHelloWorld.profile = GuiKoreanTextProfileGungsuh;
+        tbxLanguage.profile = GuiKoreanTextProfileGungsuh;
+        tbxGoodbye1.profile = GuiKoreanTextProfileGungsuh;
+        tbxGoodbye2.profile = GuiKoreanTextProfileGungsuh;
+        tbxLast.profile = GuiKoreanTextProfileGungsuh;
+    }
+}
+
+function rbtnDotum::onClick(%this)
+{
+    if($SelectedLang == 1)
+    {
+        tbxHelloWorld.profile = GuiKoreanTextProfileDotum;
+        tbxLanguage.profile = GuiKoreanTextProfileDotum;
+        tbxGoodbye1.profile = GuiKoreanTextProfileDotum;
+        tbxGoodbye2.profile = GuiKoreanTextProfileDotum;
+        tbxLast.profile = GuiKoreanTextProfileDotum;
+    }
+}</pre>
+<br/>
+<p>Finally, in <strong>scripts/client/init.cs</strong> after <strong>exec("scripts/gui/optionsDlg.cs");</strong> (around line 98) add a line to load <strong>scripts/gui/LangTest.cs</strong>:</p>
+<pre>exec("scripts/gui/LangTest.cs");</pre>
+<br/>
+<p>Once that's in place, fire up T3D and give it a shot.  Once the main menu is loaded up, open the console and type <strong>canvas.pushDialog(LangTest)</strong>.</p>
+<br/>
+<p>You should see the new GUI:</p>
+<p><img src="images/I18N_GUIStart.png" width="375" height="335" alt=""/></p>
+<br/>
+<p>Click the <strong>English</strong> button to see the fields populated with English text:</p>
+<p><img src="images/I18N_ChooseEnglish.png" width="375" height="335" alt=""/></p>
+<br/>
+<p>Click the <strong>Korean</strong> button to see the fields populated with Korean text in the default BatangChe font:</p>
+<p><img src="images/I18N_ChooseKoreanDefault_Batang.png" width="375" height="335" alt=""/></p>
+<br/>
+<p>Click the <strong>Gungsuh</strong> radio button to see the fields populated with Korean text in the GungsuhChe font:</p>
+<p><img src="images/I18N_ChooseKorean_Gungsuh.png" width="375" height="335" alt=""/></p>
+<br/>
+<p>Click the <strong>Dotum</strong> radio button to see the fields populated with Korean text in the DotumChe font:</p>
+<p><img src="images/I18N_ChooseKorean_Dotum.png" width="375" height="335" alt=""/></p>
+                <a name="Close" id="Close"></a>
+                <h2> <span class="mw-headline">Conclusion</span></h2>
+<p>And there you have it - probably not foolproof, but it gets the job done.</p>
+<p><br/>Special thanks to irei1as on <a href="http://www.torque3d.org">Torque3D.org</a> for finding the original resource and bringing it back to the light of day.</p>
+    	</table>
+    </div>
+</div>
+</body>
+</html>

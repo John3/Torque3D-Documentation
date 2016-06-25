@@ -1,0 +1,713 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<HEAD><SCRIPT SRC="../../../include/tutorial.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/prototype.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/scriptaculous.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/glossaryLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/referenceLookUp.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/component.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT SRC="../../../include/componentContainer.js" LANGUAGE="JavaScript"></SCRIPT>
+<SCRIPT>DocImagePath = "../../../";</SCRIPT><link href="../../../include/tutorialStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/tutorial.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/globalMainPageStyles.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/referenceThemeStyle.css" rel="stylesheet" type="text/css" />
+<link href="../../../include/docTheme/theme.css" rel="stylesheet" type="text/css" />
+<script>
+   // this script chunk is to update the ToC to the current doc and expand it
+   pageID = 86;
+   parent.leftFrame.expandToItem('tree2', 'doc86');
+   var element = parent.leftFrame.document.getElementById('doc86');
+   if((element) && (element.className==parent.leftFrame.nodeClosedClass))
+{
+   element.className = parent.leftFrame.nodeOpenClass
+}
+;
+</script>
+<link rel="stylesheet" type="text/css" href="../../../include/container.css" />
+<link rel="stylesheet" type="text/css" href="../../../include/content.css" />
+<title>Torque3D - RTS Prototype: Part 2</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    </head>
+<BODY id = "BODYID" onLoad = "initComponent()"  bgcolor="#FFFFFF" class="mediawiki ltr ns-0 ns-subject page-Torque3D_Scripting_Advanced_RTSPrototype2 skin-monobook">
+<table width="700" cellspacing="0" cellpadding="0" border="0" style="text-align: justify;" xmlns="">
+<tr>
+<td width="700">
+
+<div id="globalWrapper" xmlns="http://www.w3.org/1999/xhtml">
+  <div id="column-content">
+    <a name="top" id="top"></a>
+      
+        <table border="0" cellpadding="15" cellspacing="0" width="700">
+          <tbody>
+            <tr>
+              <td width="700"><table id="toc" summary="Contents">
+                  <tbody>
+                    <tr>
+                      <td><div id="toctitle">
+                          <h2>Contents</h2>
+                        <ul>
+                          <li class="toclevel-1"><a href="#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a></li>
+                          <li class="toclevel-1"><a href="#NewUnitSetup"><span class="tocnumber">2</span> <span class="toctext">New Unit Type Setup</span></a></li>
+                          <li class="toclevel-1"><a href="#UIRestructure"><span class="tocnumber">3</span> <span class="toctext">UI Restructure</span></a></li>
+                            <ul>
+                              <li class="toclevel-2"><a href="#CreateUIArt"><span class="tocnumber">3.1</span> <span class="toctext">Create New UI Art Items</span></a></li>
+                              <li class="toclevel-2"><a href="#CreateNewUI"><span class="tocnumber">3.2</span> <span class="toctext">Create RTS Interface</span></a></li>
+                              <li class="toclevel-2"><a href="#ImplementUIBackend"><span class="tocnumber">3.3</span> <span class="toctext">Implement Interface Button Callbacks In PlayGui</span></a></li>
+								<li class="toclevel-2"><a href="#CreateBaseResourceSys"><span class="tocnumber">3.4</span> <span class="toctext">Create The Base Resource System</span></a></li>                       
+                          </ul>
+                          <li class="toclevel-1"><a href="#NewUnitImplementation"><span class="tocnumber">4</span> <span class="toctext">New Unit Type Implementation</span></a></li>
+                            <ul>
+                              <li class="toclevel-2"><a href="#CreateMedic"><span class="tocnumber">4.1</span> <span class="toctext">Create The Medic</span></a></li>
+                              <li class="toclevel-2"><a href="#CreateGrenadier"><span class="tocnumber">4.2</span> <span class="toctext">Create The Grenadier</span></a></li>
+                              <li class="toclevel-2"><a href="#CreateInfantry"><span class="tocnumber">4.3</span> <span class="toctext">Create The Infantryman</span></a></li>
+                              <li class="toclevel-2"><a href="#CreateEngineer"><span class="tocnumber">4.4</span> <span class="toctext">Create The Engineer</span></a></li>
+                            </ul>
+                          <li class="toclevel-1"><a href="#CompleteCommandPost"><span class="tocnumber">5</span> <span class="toctext">From Barracks to Command Post</span></a></li>
+                          <li class="toclevel-1"><a href="#ResourceManagement"><span class="tocnumber">6</span> <span class="toctext">The Resource Management System</span></a></li>
+                            <ul>
+                              <li class="toclevel-2"><a href="#StartingResources"><span class="tocnumber">6.1</span> <span class="toctext">Starting Resources</span></a></li>
+                              <li class="toclevel-2"><a href="#ResourceGathering"><span class="tocnumber">6.2</span> <span class="toctext">Resource "Gathering"</span></a></li>
+                              <li class="toclevel-2"><a href="#ConstructionTime"><span class="tocnumber">6.3</span> <span class="toctext">Building Construction Time</span></a></li>
+                              <li class="toclevel-2"><a href="#RequestTime"><span class="tocnumber">6.4</span> <span class="toctext">Unit Request Time</span></a></li>
+                            </ul>
+                        </ul></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <h1> <span class="mw-headline">RTS Prototype: Part 2</span></h1>
+                <a name="Introduction" id="Introduction"></a>
+                <h2> <span class="mw-headline">Introduction</span></h2>
+                <p>In this document we're going to expand on what we did in Part 1 by adding new unit types, redesigning the interface, implementing a resource management system,
+                 and generally extending the functionality to more closely match features found in a basic real-time strategy game.
+                </p>
+                <p>This builds directly on work done in <a href="./RTSPrototype.html">RTS Prototype: Part 1</a>, so if you have not completed it you had better get your rear back over there
+                and finish that before proceeding.
+                </p>
+                <p>The sound files that accompany this tutorial are here <a href="RTS2_sounds.zip">(RTS2_sounds.zip)</a>.  All button and interface image files are inline with the text below.</p>
+                <a name="NewUnitSetup" id="NewUnitSetup"></a>
+                <h2> <span class="mw-headline">New Unit Type Setup</span></h2>
+                <p>The first thing we're going to do is create datablocks for our new unit types.  This will make it easier for us to get started with most of the other things we're going to be
+                 building since everything else ultimately deals with making or controlling them.
+                </p>
+                <p>Under <strong>game/art/datablocks</strong>, create a new folder called <strong>ai</strong> and copy <strong>game/art/datablocks/aiPlayer.cs</strong> into the new folder.  Rename
+                 <strong>game/art/datablocks/ai/aiPlayer.cs</strong> to <strong>game/art/datablocks/ai/infantry.cs</strong>.  Next, modify the datablock in the new file so that the new datablock is named <strong>InfantryUnit</strong>.
+                </p>
+                <pre>datablock PlayerData(InfantryUnit : DefaultPlayerData)
+{
+   shootingDelay = 2000;
+   mainWeapon = Lurker;
+};                </pre>
+                <p>Do this for the <strong>GrenadierUnit</strong>, <strong>EngineerUnit</strong>, and <strong>MedicUnit</strong> datablocks as well.
+                </p>
+<p>
+  <img alt="" src="images/RTS2_UnitDatablockScripts.png" /></p>
+  <p>Now, in <strong>game/art/datablocks/aiPlayer.cs</strong> add code to load the new unit datablocks:
+  </p>
+  <pre>... 
+// load our new AI datablocks:
+exec("./ai/infantry.cs");
+exec("./ai/engineer.cs");
+exec("./ai/grenadier.cs");
+exec("./ai/medic.cs");
+
+//-----------------------------------------------------------------------------
+// Demo Pathed AIPlayer.
+//-----------------------------------------------------------------------------
+ ... </pre>
+ <p>Now we have enough of a stub in for our unit types to proceed with building the UI and unit build request systems.</p>
+                <a name="UIRestructure" id="UIRestructure"></a>
+                <h2> <span class="mw-headline">UI Restructure</span></h2>
+                <p>The current UI works for basic demonstration purposes, but we'll need to add quite a bit to it before it really becomes a useful RTS interface.  While we are going to add to it, we are not going to go all out and make a complete interface to rival commercial titles.  Our purpose here is still to illustrate how the underlying systems can be built and we need a certain minimum set of interface elements to do that.
+                </p>
+                <a name="CreateUIArt" id="CreateUIArt"></a>
+                <h3> <span class="mw-headline">Create New UI Art Items</span></h3>
+                <p>First, we're going to need some artwork.  I totally cheated and used T3D's "Empty Room" mission to get a profile screenshot of our stock Soldier armed with both the Lurker rifle and the Ryder pistol, then converted this to a silouette to use for my button images.  I then took the weapon UI art from the <strong>games/art/gui</strong> folder to use for additional elements.  Finally, I used PaintShop Pro 5 and Paint.NET to hammer out my buttons.
+                </p>
+                Torque 3D uses "nine-slice" images for many of its interface objects.  A "nine-slice" image refers to an image that is "sliced" into nine pieces (tic-tac-toe fashion) by a specific color (usually a "pure" primary color like 255,0,0 which rarely shows up in actual images) that the engine loads up as separate image elements internally.  The <strong>GuiBitmapButtonCtrl</strong> does this but uses 36 "slices" arranged vertically in groups of nine.  Each slice group contains the image slices for one of its button states (<em>normal</em>, <em>hover/highlight</em>, <em>depressed</em>, and <em>disabled</em>).  These are my button images:
+<p>
+<table>
+	<tr><th align="center">Infantry</th><th align="center">Engineer</th><th align="center">Grenadier</th><th align="center">Medic</th><th align="center">Barracks 1</th><th align="center">Barracks 2</th></tr>
+    <tr>
+  		<td><img alt="The Infantryman button image" src="images/infantryBtn.png" /></td>
+  		<td><img alt="The Engineer button image" src="images/engineerBtn.png" /></td>
+  		<td><img alt="The Grenadier button image" src="images/grenadierBtn.png" /></td>
+		<td><img alt="The Medic button image" src="images/medicBtn.png" /></td>
+		<td><img alt="The Medic button image" src="images/Barracks01Btn.png" /></td>
+		<td><img alt="The Medic button image" src="images/Barracks02Btn.png" /></td>
+  </tr>
+</table>
+</p>
+<p>The button states are (from top down) <strong>Normal</strong>, <strong>Depressed</strong>, <strong>Hover</strong>, and <strong>Disabled</strong>.  You can download them for use by right-clicking each image and selecting "save image as..." from the context menu.</p>
+<p>We'll also add some images for other UI elements.  Panel and image border nine-slice images, and various sized resource symbol images:</p>
+<p>
+<table>
+	<tr><th align="center">Panel</th><th align="center">Border</th><th align="center">Resource 1</th><th align="center">Resource 2</th><th align="center">Resource 3</th></tr>
+    <tr>
+    	<td align="center"><img src="images/grayHudFill.png" alt="Panel bachground"/></td>
+    	<td align="center"><img src="images/panelBorderArray.png" alt="Panel border"/></td>
+    	<td align="center"><img src="images/Resourcex64.png" alt="Large resource symbol"/></td>
+    	<td align="center"><img src="images/Resourcex32.png" alt="Medium resource symbol"/></td>
+    	<td align="center"><img src="images/Resourcex16.png" alt="Small resource symbol"/></td>
+    </tr>
+</table>
+</p>
+<p>With our assets ready, we just need to add some control profiles and we can start working on the interface layout.  In <strong>art/gui/customProfiles.cs</strong> add the following profile definitions:</p>
+<pre>singleton GuiControlProfile ("ControlPanelBorderProfile")
+{
+    bitmap = "art/gui/panelBorderArray";
+    hasBitmapArray = true;
+    opaque = "0";
+};
+
+if( !isObject( GuiEngineerButtonProfile ) )
+new GuiControlProfile( GuiEngineerButtonProfile )
+{
+    opaque = true;
+    border = true;
+
+    fontColor = "50 50 50";
+    fontColorHL = "0 0 0";
+    fontColorNA = "200 200 200";
+    fixedExtent = false;
+    justify = "center";
+    canKeyFocus = false;
+    bitmap = "./EngineerBtn.png";
+    hasBitmapArray = true;
+    category = "Core";
+};
+
+if( !isObject( GuiGrenadierButtonProfile ) )
+new GuiControlProfile( GuiGrenadierButtonProfile )
+{
+    opaque = true;
+    border = true;
+
+    fontColor = "50 50 50";
+    fontColorHL = "0 0 0";
+    fontColorNA = "200 200 200";
+    fixedExtent = false;
+    justify = "center";
+    canKeyFocus = false;
+    bitmap = "./GrenadierBtn.png";
+    hasBitmapArray = true;
+    category = "Core";
+};
+
+if( !isObject( GuiInfantryButtonProfile ) )
+new GuiControlProfile( GuiInfantryButtonProfile )
+{
+    opaque = true;
+    border = true;
+
+    fontColor = "50 50 50";
+    fontColorHL = "0 0 0";
+    fontColorNA = "200 200 200";
+    fixedExtent = false;
+    justify = "center";
+    canKeyFocus = false;
+    bitmap = "./InfantryBtn.png";
+    hasBitmapArray = true;
+    category = "Core";
+};
+
+if( !isObject( GuiMedicButtonProfile ) )
+new GuiControlProfile( GuiMedicButtonProfile )
+{
+    opaque = true;
+    border = true;
+
+    fontColor = "50 50 50";
+    fontColorHL = "0 0 0";
+    fontColorNA = "200 200 200";
+    fixedExtent = false;
+    justify = "center";
+    canKeyFocus = false;
+    bitmap = "./MedicBtn.png";
+    hasBitmapArray = true;
+    category = "Core";
+};
+
+if( !isObject( GuiBarracksTeam01ButtonProfile ) )
+new GuiControlProfile( GuiBarracksTeam01ButtonProfile )
+{
+    opaque = true;
+    border = true;
+
+    fontColor = "50 50 50";
+    fontColorHL = "0 0 0";
+    fontColorNA = "200 200 200";
+    fixedExtent = false;
+    justify = "center";
+    canKeyFocus = false;
+    bitmap = "./Barracks01Btn.png";
+    hasBitmapArray = true;
+    category = "Core";
+};
+
+if( !isObject( GuiBarracksTeam02ButtonProfile ) )
+new GuiControlProfile( GuiBarracksTeam02ButtonProfile )
+{
+    opaque = true;
+    border = true;
+
+    fontColor = "50 50 50";
+    fontColorHL = "0 0 0";
+    fontColorNA = "200 200 200";
+    fixedExtent = false;
+    justify = "center";
+    canKeyFocus = false;
+    bitmap = "./Barracks02Btn.png";
+    hasBitmapArray = true;
+    category = "Core";
+};</pre>
+<p>At this point we should be ready to start on revamping PlayGui.</p>
+<a name="CreateNewUI" id="CreateNewUI"></a>
+<h3> <span class="mw-headline">Create RTS Interface</span></h3>
+<p>Open the GUI Editor and load up PlayGui:
+</p>
+<p><img alt="Loading PlayGui" src="images/RTS2_SelectPlayGui.png" /></p>
+<p>With the modifications we made in Part 1, the PlayGui should be the base PlayGui GameTSCtrl control which should contain the centerPrintDlg, the bottomPrintDlg, the LagIcon, and GuiShapeNameHud controls, along with their child controls where appropriate.  If any other controls are present in PlayGui they should be removed.</p>
+<p>Once we have a "clean" PlayGui, we'll add a GuiBitmapBorderCtrl from the <strong>Images</strong> section of the <strong>Library</strong>:</p>
+<p><img alt="GUI Editor creating a GuiBitmapBorderCtrl" src="images/RTS2_CreateRTSControlPanel.png" /></p>
+<p>Rename the new control <strong>RTSControlPanel</strong> and configure the controls with the following settings:</p>
+<p>
+<table border="true">
+	<tr bgcolor="#DBDBDB"><th width="120">Parameter</th><th width="220">Value</th></tr>
+    <tr><td>position</td><td>0 616</td></tr>
+    <tr><td>extent</td><td>1024 152</td></tr>
+    <tr><td>horizSizing</td><td>center</td></tr>
+    <tr><td>vertSizing</td><td>top</td></tr>
+    <tr><td>profile</td><td>ControlPanelBorderProfile</td></tr>
+    <tr><td>isContainer</td><td>checked</td></tr>
+</table>
+</p>
+<br/>
+<p>Here's a screenshot of my settings in the GUI Editor:</p>
+<p><img alt="GUI Editor creating a GuiBitmapBorderCtrl" src="images/RTS2_ConfigureRTSControlPanel.png" /></p>
+<p><strong>Point one</strong> is the position and extent, <strong>point two</strong> is the sizing method, <strong>point three</strong> is the profile, and <strong>point four</strong> is the container attribute.  We will be placing other controls inside of this one and those controls will depend on this parent control for their layout, so this last is set to <strong>true</strong>.</p>
+<p><br/>Now to construct the rest of the build panel setup.  Note the hierarchy as you proceed: Keeping each type of element in its own frame will allow you to easily rearrange elements later if you need to.</p>
+<table border="true">
+<tr><th align="center">Control Panel Background</th><th align="center">Resource Display Frame</th></tr>
+<tr><td valign="top"><img src="images/RTS2_ControlPanelBackground.png" alt=""/></td><td valign="top"><img src="images/RTS2_ControlPanelResFrame.png" alt=""/></td></tr>
+</table>
+<br/>
+<table border="true">
+<tr><th align="center">Resource Icon</th><th align="center">Resource Display Text</th></tr>
+<tr><td valign="top"><img src="images/RTS2_ControlPanelResIcon.png" alt=""/></td><td valign="top"><img src="images/RTS2_ControlPanelResDisplayText.png" alt=""/></td></tr>
+</table>
+<br/>
+<table border="true">
+<tr><th align="center">Barracks Frame</th><th align="center">Barracks Construction Button</th></tr>
+<tr><td valign="top"><img src="images/RTS2_ControlPanelBarracksFrame.png" alt=""/></td><td valign="top"><img src="images/RTS2_ControlPanelBarracksBtn.png" alt=""/></td></tr>
+</table>
+<br/>
+<table border="true">
+<tr><th align="center">Unit Construction Frame</th><th align="center">Infantry Button</th></tr>
+<tr><td valign="top"><img src="images/RTS2_ControlPanelUnitFrame.png" alt=""/></td><td valign="top"><img src="images/RTS2_ControlPanelInfantryBtn.png" alt=""/></td></tr>
+</table>
+<br/>
+<table border="true">
+<tr><th align="center">Grenadier Button</th><th align="center">Medic Button</th></tr>
+<tr><td valign="top"><img src="images/RTS2_ControlPanelGrenadierBtn.png" alt=""/></td><td valign="top"><img src="images/RTS2_ControlPanelMedicBtn.png" alt=""/></td></tr>
+</table>
+<br/>
+<table border="true">
+<tr><th align="center">Engineer Button</th><th align="center">Infantry Text</th></tr>
+<tr><td valign="top"><img src="images/RTS2_ControlPanelEngineerBtn.png" alt=""/></td><td valign="top"><img src="images/RTS2_ControlPanelInfantryTxt.png" alt=""/></td></tr>
+</table>
+<br/>
+<table border="true">
+<tr><th align="center">Grenadier Text</th><th align="center">Medic Text</th></tr>
+<tr><td valign="top"><img src="images/RTS2_ControlPanelGrenadierTxt.png" alt=""/></td><td valign="top"><img src="images/RTS2_ControlPanelMedicTxt.png" alt=""/></td></tr>
+</table>
+<br/>
+<table border="true">
+<tr><th align="center">Engineer Text</th></tr>
+<tr><td valign="top"><img src="images/RTS2_ControlPanelEngineerTxt.png" alt=""/></td></tr>
+</table>
+<p><br/>Once all of these controls have been correctly created and nested you should have a control panel that looks something like this:</p>
+<p><img src="images/RTS2_ControlPanelConstruction.png" alt=""/></p>
+<a name="ImplementUIBackend" id="ImplementUIBackend"></a>
+<h3> <span class="mw-headline">Implement Interface Button Callbacks In PlayGui</span></h3>
+<p>Implementing the button callbacks in PlayGui should be pretty straightforward.  We've already got some cruft left from Part 1, so just fix and add to match the following:
+</p>
+<pre>// This function is the callback that handles our new button.  When you click it
+// the button tells the PlayGui that we're now in building placement mode.
+function btnBarracks::onClick(%this)
+{
+    PlayGui.placingBuilding = true;
+    PlayGui.buildingClass = "barracks";
+    if ($PlacementDecal $= "")
+    {
+        // create placement decal and keep it in position with the current mouse location.
+        
+    }
+}
+
+function btnEngineer::onClick(%this)
+{
+    commandToServer('requestEngineer');
+}
+
+function btnInfantry::onClick(%this)
+{
+    commandToServer('requestInfantry');
+}
+
+function btnGrenadier::onClick(%this)
+{
+    commandToServer('requestGrenadier');
+}
+
+function btnMedic::onClick(%this)
+{
+    commandToServer('requestMedic');
+}</pre>
+<br /><p>Note that the <strong>InfantryBld</strong> button is now the <strong>btnBarracks</strong> button, so adjust that accordingly and add the other button callback handlers.</p>
+<a name="CreateBaseResourceSys" id="CreateBaseResourceSys"></a>
+<h3> <span class="mw-headline">Create The Base Resource System</span></h3>
+<p>Now that we have buttons to request buildlings and units we're going to need a resource system and a way to manage our buildings and unit requests.  I decided to keep it simple, so we'll use a single resource: Money.  Our money will automatically replenish itself over time and we'll be able to pick up bonus money for achieving specific battlefield objectives.
+</p>
+<p>First, let's create the ResourceManager.  This script object is actually not as complex as it sounds - it just tracks object costs and updates client resource displays to reflect each client's current resource level.  We'll throw some unit and building costs in here as stand-ins for now, but this will be an important place to come back to when it's time to start balancing the game.
+</p>
+<p>In <strong>scripts/server</strong> create a new script named <strong>resourceManager.cs</strong> and add the following code to it, then save it.
+</p>
+<pre>$StartingResources = 150000;
+$ResourceReplenish = 10;
+$ResourceCap = 500000;
+
+if (!isObject(ResourceManager))
+    new ScriptObject(ResourceManager);
+
+function ResourceManager::initialize(%this)
+{
+    %this.itemCosts[0] = "barracks,100000";
+    %this.itemCosts[1] = "Infantry,1000";
+    %this.itemCosts[2] = "Engineer,2000";
+    %this.itemCosts[3] = "Grenadier,2500";
+    %this.itemCosts[4] = "Medic,4000";
+    %this.schedule(1000, "update");
+}
+
+function ResourceManager::update(%this)
+{
+    %count = ClientGroup.getCount();
+    for(%i = 0; %i < %count; %i++)
+    {
+        %client = ClientGroup.getObject(%i);
+        if(%client.costList $= "")
+        {
+            %client.costList = %this.getItemCosts();
+            commandToClient(%client, 'setItemCosts', %client.team, %client.costList);
+        }
+        if(%client.resourceBank $= "")
+            %client.resourceBank = $StartingResources;
+        %client.resourceBank += $ResourceReplenish;
+        if(%client.resourceBank > $ResourceCap)
+            %client.resourceBank = $ResourceCap;
+        commandToClient(%client, 'updateResourceDisplay', %client.resourceBank, "");
+    }
+    %this.schedule(1000, "update");
+}
+
+function ResourceManager::getCost(%this, %itemType)
+{
+    %i = 0;
+    %entry = %this.itemCosts[%i];
+    %type = getField(%entry, 0);
+    %cost = getField(%entry, 1);
+    while (%entry !$= "" && %type !$= %itemType)
+    {
+        %entry = strreplace(%entry, ",", "\t");
+        %type = getField(%entry, 0);
+        %cost = getField(%entry, 1);
+        %entry = %this.itemCosts[%i++];
+    }
+    return %cost;
+}
+
+function ResourceManager::getItemCosts(%this)
+{
+    %list = "";
+    %i = 0;
+    %entry = %this.itemCosts[%i];
+    while (%entry !$= "")
+    {
+        if(%list $= "")
+            %list = %entry;
+        else
+            %list = %list SPC %entry;
+        %entry = %this.itemCosts[%i++];
+    }
+    return %list;
+}</pre>
+<br />
+<p>First, we create some global script variables so that everyone knows what our starting amount is, how fast our money replenishes, and what our money cap amount is.
+</p>
+<p>We follow that by creating the script object itself.  In the <strong>initialize()</strong> method we set our item costs in an array and start our scheduled system update method on a one second schedule.
+</p>
+<p>In the <strong>update()</strong> menthod we walk our clients and send them the item cost list if they don't already have it, update the client's current resource bank appropriately, then send the updated bank amount to be displayed.  Finally, we reschedule our upated on our one second tick time.
+</p>
+<p>The <strong>getCost()</strong> method is used by the server commands that create requested buildings or units from client requests.  We'll see more of this later.
+</p>
+<p>Finally, the <strong>getItemCosts()</strong> method is used internally to format our cost list to our clients in <strong>update()</strong> in a tagged string format.
+</p>
+<p>In order to use this we'll need to load it, so open <strong>scripts/server/scriptExec.cs</strong> and add this line:
+</p>
+<pre>// Load our gametypes
+exec("./gameCore.cs"); // This is the 'core' of the gametype functionality.
+// --- Add this line between loading gameCore.cs and gameDM.cs
+exec("./resourceManager.cs");
+// --- done add.
+exec("./gameDM.cs"); // Overrides GameCore with DeathMatch functionality.
+</pre>
+<br />
+<p>We'll also want a way to manage building requests.  At the moment this just handles <strong>barracks</strong> buildings, but the <strong>BldEventListener::requestBuilding()</strong> method is where we would add other types of buildings later.  For now, in <strong>scripts/server</strong> create <strong>buildingManager.cs</strong> and put the following code in it:
+</p>
+<pre>function initializeBldEventManager()
+{
+    if (!isObject(BldEventManager))
+    {
+        $BldEventManager = new EventManager(BldEventManager)
+        { 
+            queue = "BldEventQue"; 
+        };
+        
+        // Module related signals
+        BldEventManager.registerEvent("_RequestBuilding");
+    }
+    
+    if (!isObject(BldListener))
+    {
+        $BldListener = new ScriptMsgListener(BldListener) 
+        { 
+            class = "BldEventListener"; 
+        };
+        
+        // Module related subscriptions
+        BldEventManager.subscribe(BldListener, "_RequestBuilding", "requestBuilding");
+    }
+}
+
+// Cleanup the event manager
+function destroyBldEventManager()
+{
+    if (isObject(BldEventManager) && isObject(BldListener))
+    {
+        // Remove all the subscriptions
+        BldEventManager.remove(BldListener, "_RequestBuilding");
+        
+        // Delete the actual objects
+        BldEventManager.delete();
+        BldListener.delete();
+        
+        // Clear the global variables, just in case
+        $BldEventManager = "";
+        $BldListener = "";
+    }
+}
+
+function BldEventListener::requestBuilding(%this, %messageData)
+{
+    //%pos, %shape, %class, %team
+    %pos = getField(%messageData, 0);
+    %class = getField(%messageData, 1);
+    %team = getField(%messageData, 2);
+    switch$(%class)
+    {
+        case "barracks":
+            %shape = "art/shapes/station/station0"@%team@".dts";
+    }
+    
+    %count = ClientGroup.getCount();
+    %client = "";
+    %found = false;
+    for(%i = 0; %i < %count; %i++)
+    {
+        %client = ClientGroup.getObject(%i);
+        if(%client.team == %team)
+        {
+            %found = true;
+            break;
+        }
+    }
+    if(!%found)
+        return;
+    if(%client.resourceBank < ResourceManager.getCost(%class))
+    {
+        bottomPrint(%client, "You don't have enough resources to build this.", 5, "You don't have enough resources to build this.");
+        return;
+    }
+    // spawn a new object at the intersection point
+    %obj = new TSStatic()
+    {
+        position = %pos;
+        shapeName = %shape;
+        class = %class;
+        collisionType = "Visible Mesh";
+        scale = "0.5 0.5 0.5";
+    };
+    
+    %navMesh = 0;
+    %count = MissionGroup.getCount();
+    for(%i = 0; %i < %count; %i++)
+    {
+        %missionObj = MissionGroup.getObject(%i);
+        if(%missionObj.getClassName() $= "NavMesh")
+        {
+            %navMesh = %missionObj;
+            break;
+        }
+    }
+    if (%navMesh > 0)
+        NavMeshUpdateOne(%navMesh, %obj);
+
+    // Add the new object to the MissionCleanup group
+    MissionCleanup.add(%obj);
+
+    // Set up a spawn point for new troops to arrive at.
+    %teamSpawnGroup = "Team" @ %team @ "SpawnGroup";
+    if (!isObject(%teamSpawnGroup))
+    {
+        new SimGroup(%teamSpawnGroup)
+        {
+            canSave = "1";
+            canSaveDynamicFields = "1";
+            enabled = "1";
+        };
+
+        MissionGroup.add(%teamSpawnGroup);
+    }
+    
+    %spawnName = "team" @ %team @ "Spawn" @ %obj.getId();
+    %point = new SpawnSphere(%spawnName)
+    {
+        radius = "1";
+        dataBlock = "SpawnSphereMarker";
+        spawnClass = $Game::DefaultPlayerClass;
+        spawnDatablock = $Game::DefaultPlayerDataBlock;
+    };
+    %point.position = VectorAdd(%obj.getPosition(), "0 5 2");
+    %teamSpawnGroup.add(%point);
+    MissionCleanup.add(%point);
+    %client.resourceBank -= ResourceManager.getCost(%class);
+    commandToClient(%client, 'updateResourceDisplay', %client.resourceBank, %class);
+}
+</pre>
+<br />
+<p>If you're watching closely you'll notice that the <strong>BldEventListener::requestBuilding()</strong> method strongly remsembles what is currently in the <strong>scripts/server/commands.cs</strong> <strong>createBuilding()</strong> function - that's because we're moving it from there to here so it's handled by the building management system instead, and that function will request buildings from the building manager.</p>
+<p>We'll need to load this too, so open <strong>scripts/server/scriptExec.cs</strong> again and add this line after the last one:
+</p>
+<pre>// Load our gametypes
+exec("./gameCore.cs"); // This is the 'core' of the gametype functionality.
+exec("./resourceManager.cs");
+// --- Add this line between loading resourceManager.cs and gameDM.cs
+exec("./buildingManager.cs");
+// --- done add.
+exec("./gameDM.cs"); // Overrides GameCore with DeathMatch functionality.
+</pre>
+<br />
+<p>Now that everything is loaded we will open <strong>scripts/server/gameDM.cs</strong> and in <strong>DeathMatchGame::startGame()</strong> we'll initialize our new objects:
+</p>
+<pre>function DeathMatchGame::startGame(%game)
+{
+   //echo (%game @"\c4 -> "@ %game.class @" -> DeathMatchGame::startGame");
+
+   parent::startGame(%game);
+   // initialize our building request and resource systems
+   initializeBldEventManager();
+   ResourceManager.initialize();
+}</pre>
+<br />
+<p>While we're here, let's modify <strong>DeathMatchGame::endGame()</strong> as well:
+</p>
+<pre>function DeathMatchGame::endGame(%game)
+{
+   //echo (%game @"\c4 -> "@ %game.class @" -> DeathMatchGame::endGame");
+   
+   // clean up our building manager before exiting the mission
+   destroyBldEventManager();
+   parent::endGame(%game);
+}</pre>
+<br />
+<p>Since we've moved the heavy lifting to the building manager we can go back to <strong>scripts/server/commands.cs</strong> and simplify <strong>createBuilding()</strong> like this:
+</p>
+<pre>function createBuilding(%client, %pos, %start, %ray, %class)
+{
+    // find end of search vector
+    %ray = VectorScale(%ray, 2000);
+    %end = VectorAdd(%start, %ray);
+
+    // set up to look for the terrain
+    %searchMasks = $TypeMasks::TerrainObjectType;
+
+    // search!
+    %scanTarg = ContainerRayCast( %start, %end, %searchMasks );
+
+    // If the terrain object was found in the scan
+    if( %scanTarg )
+    {
+        // get the world position of the click
+        %pos = getWords(%scanTarg, 1, 3);
+
+        // Note:  getWord(%scanTarg, 0) will get the SimObject id of the object 
+        // that the button click intersected with.  This is useful if you don't 
+        // want to place buildings on certain other objects.  For instance, you 
+        // could include TSStatic objects in your search masks and check to see 
+        // what you clicked on - then don't place if it's another building.
+
+        // spawn a new object at the intersection point
+        //%pos, %class, %team
+        BldEventManager.postEvent("_RequestBuilding", %pos TAB %class TAB %client.team);
+    }
+}</pre>
+<a name="NewUnitImplementation" id="NewUnitImplementation"></a>
+<h2> <span class="mw-headline">New Unit Type Implementation</span></h2>
+<p>
+</p>
+<a name="CreateMedic" id="CreateMedic"></a>
+<h3> <span class="mw-headline">Create The Medic</span></h3>
+<p>
+</p>
+<a name="CreateGrenadier" id="CreateGrenadier"></a>
+<h3> <span class="mw-headline">Create The Grenadier</span></h3>
+<p>
+</p>
+<a name="CreateInfantry" id="CreateInfantry"></a>
+<h3> <span class="mw-headline">Create The Infantryman</span></h3>
+<p>
+</p>
+<a name="CreateEngineer" id="CreateEngineer"></a>
+<h3> <span class="mw-headline">Create The Engineer</span></h3>
+<p>
+</p>
+<a name="CompleteCommandPost" id="CompleteCommandPost"></a>
+<h2> <span class="mw-headline">From "Barracks" to Command Post</span></h2>
+<p>
+</p>
+<a name="ResourceManagement" id="ResourceManagement"></a>
+<h2> <span class="mw-headline">The Resource Management System</span></h2>
+<p>
+</p>
+<a name="StartingResources" id="StartingResources"></a>
+<h3> <span class="mw-headline">Starting Resources</span></h3>
+<p>
+</p>
+<a name="ResourceGathering" id="ResourceGathering"></a>
+<h3> <span class="mw-headline">Resource "Gathering"</span></h3>
+<p>
+</p>
+<a name="ConstructionTime" id="ConstructionTime"></a>
+<h3> <span class="mw-headline">Building Construction Time</span></h3>
+<p>
+</p>
+<a name="RequestTime" id="RequestTime"></a>
+<h3> <span class="mw-headline">Unit Request Time</span></h3>
+<p>
+</p>
+            </td></tr>
+    	</table>
+    </div>
+</div>
+</body>
+</html>
